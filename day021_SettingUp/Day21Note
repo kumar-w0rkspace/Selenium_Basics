@@ -27,8 +27,10 @@ Create Workspace-> Create Maven Project-> Download Dependencies (mvn repo -> ver
 
 TestCase
 --------
-Launch Browser, Open URL demo.opencart, Validate Title, Close Browser
-(getTitle, getTitle.equals)
+Launch Browser
+Open URL demo.opencart
+Validate Title (getTitle, getTitle.equals)
+Close Browser
 
     WebDriver driver = new EdgeDriver();  // initialising browser
     driver.get("url");                    // opening webpage
