@@ -1,0 +1,56 @@
+Day 22 - Locators
+=================
+Links > https://demoblaze.com/, https://demo.opencart.com/
+--------------------------------------------------------
+Locators - ID,Name,LinkText,PartialLinkText,Class&Tag
+
+Identy and locate an element, and perform actions on those element > Automation testers main job
+Use any locator, but ultimately, be able to find the object
+
+Websites are mostly designed using HTML, so we gotta know some html(Scripting language)
+
+Basic locators and customised locators
+Basic -> ID, Name, Linktext/ PartialLinktext, ClassName, TagName (Initialised by methods. Eg By)
+
+Customised -> Css Selector - Tag & ID, Tag & Class, Tag & Attributes, Tag,Class & Attribute(our own stuff)
+Customised -> xPath - Absolute xPath, Relative xPath (Generating our own Selectors)
+
+
+driver.findElement(By.id()) // Passing locator in the form of By class {Single element}
+driver.findElements(By.id()) // Passing locator in the form of By class {Multiple element}
+return type of findElements is a List<WebElement> (Array)
+
+LinkedText - Used to find the full linktext name (Preferable mostly)
+PartialLinkedTexts - used to find half or portion of the linktext's names
+
+Tag & Class - used to locate multiple webelements (Group of webelements)
+
+TagName - will be same for multiple webelements
+Class - Category of web elements (Radio, dropdowns etc)
+
+Requirement for getting group of elements - to work with a group of elements from webpage
+eg if we need to know all the href links, we can write a script to see the comparison
+
+*IMP*
+findElement() -- Single webelement
+findElements()-- Multiple webelement
+
+Scenario 1; Locator matching with single web element
+findElement(loc)---> Single web element  -- WebElement
+findElements(loc)---> Single web element -- List<WebElement>
+
+Scenario 2; Locator matching with multiple elements
+findElement(loc)---> Single web element  -- WebElement
+findElements(loc)--> Multiple web element -- List<WebElement>
+
+Scenario 3; Locator not matching with any element/elements
+findElement(loc)---> Exception -- No such Element Exception
+findElements(loc)--> No exceptions -- return is 0
+
+
+Assignment - https://demoblaze.com/
+Total no. of links and print them
+total no of images
+click on any product using link / partial linktext
+
+-END-
