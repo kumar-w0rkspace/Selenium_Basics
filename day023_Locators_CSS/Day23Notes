@@ -1,0 +1,29 @@
+Day 23 - CSS Selectors
+=======================
+
+Links > https://demo.nopcommerce.com/ 
+-------------------------------------
+Tools > Selectors Hub Plugin
+
+Css (Cascading Style Sheet) Graphical Selector, Customisable selector
+
+In some webpages single attributes might not be there. so we gotta go with customisable 
+
+4 combinations - (no need to mention tag in code)
+    tag id               --- tag#id
+    tag class            --- tag.class
+    tag attributes       --- tag[attribute = "value"]
+    tag class atrributes --- tag.classname[attribute = "value"] (differentiate web elements of same branch)
+
+>tag.class might have multiple elements and to precision pick an element, we use attribute also along with tag and class
+(tag and class for group of element, tag class attri for one single speficic element)
+
+>>Before using it on code, double check if the name is correct by searching it on the browser dev tools<<
+
+# = id
+. = class
+[] = attributes
+
+Assignment- opencart > use css locators and identify some elements
+
+-END-
