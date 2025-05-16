@@ -1,0 +1,94 @@
+Day24 - Xpath
+=============
+
+>Single and multiple attribute xpaths
+>and / or operator xpaths
+>xpath with text method
+>xpath with contains function
+>xpath with starts-with function
+>chained xpaths
+
+Xpath-->
+    xpath works on xml(extensible markup language)
+    xpath is an address of the element
+    works based on DOM(Document Object Model- created when browsing pages on runtime)
+    if dom is not loaded correctly even though the xpath is correct, the code will throw an error
+
+2 types - 
+>Absolute(full) xPath (No attributes, only tag names)
+>Relative(Partial) xPath (Usage of attributes)
+
+    Absolute eg (we dont use attributes)- /html/body/div[6]/div[1]/div[2]/div[1]/a/img
+    (start from root HTML node)
+
+    Relative eg (we use [attributes])- //input[@id='small-searchterms']
+    (dont start from root node, and is mainly used for dynamically changing pages)
+
+Difference between both
+    abs xpath with follow the full path to the element, but rel xpath jumps to the element based on attribute
+    abs xpath starts with /, but rel xpath starts with //
+    abs xpath dont use attributes, but rel xpath does
+
+Relative xPath
+--------------
+
+//tagname[@attribute='value']
+//*[@attribute='value']
+
+>>single attribute xpath for an element
+    syntax - "//*[@class='nav-link']")).click();
+
+>>multiple attribute xpath for an element
+    syntax - "//*[@name='search'][@placeholder='Search']")).sendKeys("Dang");
+    (multile attribute make your xpath more stronger)
+
+>>and / or operators
+    and syntax - //*[@name='search' and @placeholder='Search']
+    or syntax - //*[@name='search' or @placeholder='Search']
+
+
+>>inner text method
+    text() [text can be replaced with .]
+    //tag[text()='Random Text'] -- custom xpath where attribute is shifted to text method
+
+    <a href="https://xyz.com"> Click ME </a>
+    Click ME is linked text and inner text
+
+    <div>Welcome</div>
+    Welcome is not a linked text, but is an inner text
+
+
+>>contains()
+    Partial value of the attribute
+    //input[contains(@placeholder, 'Sea')] --- will search for the elements contains letters Sea
+
+>>start with()
+    //input[starts-with(@name, 'Bo')]
+    use wheneever we want to locate dynamic webelements
+    handling dynamic attributes eg - stopwatch in webpage that use same button as start and stop
+ 
+Cant generate these xpath. have to generate manually
+    //*[@id='start' or @id ='stop']
+    //*[contains(@id,'st')]
+    //*[starts-with(@id, 'st')]
+    
+eg 2
+name = xyz001, xyz002, xyz003, xyz004
+    //*[contains(@name,'xyz')]
+    //*[starts-with(@name,'xyz')]
+    //*[contains(@name, '00')]
+eg3
+name= 101xyz, 201xyz, 301xyz..
+    //[contains(@name,'xyz')]
+    //[starts-with(name,'xyz']
+
+
+Chained Xpath (combination of rel and abs xPath)   
+    //tag[@id='logo']/a/img
+    here the target is img, but we cant find any attributes for it, so we go levels up to find an element with attribute and then give path to img
+
+>>> Difference between CSS selector and xPath
+    >Css can only do top to down approach
+    >xPath is multidirectional (xPath Axes)
+
+-END-
