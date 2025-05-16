@@ -1,0 +1,100 @@
+Day25 - Xpath Axes
+==================
+
+Links ->  https://money.rediff.com/gainers/bse/daily/groupa
+
+XPath axes
+----------
+>Using xpath axes we can navigate the page from top to bottom or bottom to top and find any element on webpage even though we have no attribute mentioned (using neighbour elements)
+
+>We can navigate in all directions in DOM using xpath axes (multidirection)
+>In DOM there is only one parent for one element
+
+Different type of xPath axes -
+    The way is by using an element as a node and navigate through the node using some relations
+
+Xpath Axes Relations
+
+                    Ancestor::
+
+                            parent::
+
+    preceeding-siblings::   selfNode   following-siblings::
+
+                            child::
+
+                          descendant::
+
+self, parent, child, ancestor, descendant, following, preceding, following-sibling, preceeding-sibling
+
+Locating Parent element->
+    RelxPath/parent::tagname
+    RelxPath/parent::::*
+    RelxPath/parent::::..   (not used always)
+
+
+Locating Child element->
+    RelxPath/child::tagname
+    RelxPath/tagname
+
+
+In practice / is used instead of child:: from the known xpath
+
+Locating Grandchildren element->
+    RelxPath/child/tagname
+    RelxPath/*/tagname
+
+
+Locating Ancestor->
+    RelxPath/ancestor::tagname
+    RelxPath/ancestor::*
+
+
+Locating Descandant->
+    RelxPath/descendant::tagname
+    RelxPath//tagname
+    RelxPath//tagname[2]
+
+
+We can use // instead of descendant:: keyword
+    it ignores all the tags between root element and target element
+    if there are two tagname, pass the index number like tagname[1]
+
+Locating Following
+    RelxPath/following::tagname
+    RelxPath/following::*
+    RelxPath/following::tagname[branch no.]
+    RelxPath/following::tagname[first()] - to capture the first element on the siblings tree
+    RelxPath/following::tagname[last()] - to capture the last element on the siblings tree
+
+
+Locating Preceeding
+    RelxPath/preceeding::tagname
+    RelxPath/preceeding::*
+    RelxPath/preceeding::tagname[branch no.]
+    RelxPath/preceeding::tagname[first()] - to capture the first element on the siblings tree
+    RelxPath/preceeding::tagname[last()] - to capture the last element on the siblings tree
+
+Following/preceeding VS following-sibling/ preceeding-sibling
+-------------------------------------------------------------
+>>following/preceeding elements may or maynot be siblings<<
+>>following-sibling/preceeding-sibling are strictly siblings<<
+
+Following-sibling->
+    RelxPath/following-sibling::tagname
+    RelxPath/following-sibling::*
+    RelxPath/following-sibling::*[branch no.]
+
+
+Preceeding-sibling->
+    RelxPath/preceeding-sibling::tagname
+    RelxPath/preceeding-sibling::*
+    RelxPath/preceeding-sibling::*[branch no.]
+
+
+Chained xpath axes
+------------------
+    xpath1|xpath2...|xpathn
+    eg. //tagname[@attribute='value']//tagname[@attribute='value']//tagname
+
+-END-
