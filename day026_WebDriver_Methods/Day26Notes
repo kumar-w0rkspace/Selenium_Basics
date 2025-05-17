@@ -1,0 +1,49 @@
+Day26 - WebDriver Methods
+=======================
+Links ->  https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+          https://ultimateqa.com/automation
+          https://testautomationpractice.blogspot.com/
+          https://demo.nopcommerce.com/register
+
+
+Basic WebDriver methods - 
+    get methods              web page/s
+    conditional methods      return boolean values
+    browser methods          close,quit
+    wait methods             page wait till find element
+    navigational methods     driver navigation 
+ 
+
+web element - an element present on webpage (inputbox, checkbox, radio button etc.)
+
+
+WebDriver get methods
+---------------------
+    get(url) - opens the url on the browser
+    getTitle() - returns the title of the page
+    getCurrentUrl() - returns the URL of the page
+    getPageSoruce() - returns the source code of the page
+    getWindowHandle() - returns ID of the single browser window (Dynamic each time we open a window)
+    getWindowHandles() - returns ID's of mutliple web browser (Dynamic each time we open a window)
+
+>>for getWindowHandles() the return type is Set<String>, as Set<String> will not let duplicates<<
+    Set<String> windowsID=driver.getWindowHandles();
+
+whenever we open another link through automation, the new tab will be focused but the driver will be still on old tab.
+we have to switch to new tab through code
+
+we can use getwindowhandle/s +  SWITCHING COMMANDS(later eps) to navigate through multiple tabs
+
+WebDriver conditional methods (access these commands through WebElement (Mainly used for validation tasks))
+-----------------------------
+    isDisplayed()- anything that can be located
+    isEnabled() - anything but its use is for input data boxes(interactable, non static, operational)
+    isSelected() - to check if element is selected or not (radio, checkbox, dropdown etc)
+
+
+WebDriver browser methods 
+-------------------------
+    driver.close(); - closes the current window(whereever the driver is focused)
+    driver.quit() - closes the whole browser
+
+-END-
