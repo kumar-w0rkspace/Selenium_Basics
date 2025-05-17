@@ -117,7 +117,7 @@ Decleration Syntax-
 				.pollingEvery(Duration.ofSeconds(5))     //- repeated hit every x sec
 				.ignoring(NoSuchElementException.class); //- ignores exception till the max timeout
 
-Assignment syntax
+Implementation syntax
 
 WebElement userName = myWait.until(new Function<WebDriver, WebElement>()
 {
