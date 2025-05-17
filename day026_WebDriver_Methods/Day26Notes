@@ -7,11 +7,11 @@ Links ->  https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
 
 
 Basic WebDriver methods - 
-    get methods              web page/s
-    conditional methods      return boolean values
-    browser methods          close,quit
-    wait methods             page wait till find element
-    navigational methods     driver navigation 
+    get methods              web page/s (driver method)
+    conditional methods      return boolean values (element methods)
+    browser methods          close,quit (driver method)
+    wait methods             page wait till find element (driver method)
+    navigational methods     driver navigation (driver method)
  
 
 web element - an element present on webpage (inputbox, checkbox, radio button etc.)
