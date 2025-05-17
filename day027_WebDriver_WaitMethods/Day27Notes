@@ -1,0 +1,131 @@
+Day27 - WebDriver Wait Methods
+==============================
+
+WebDriver wait
+    >implicit wait
+    >explicit wait
+        >fluent wait
+
+>>maximum wait time is for 10s in software testing standards. above it is poor perf<<
+corporate perf is less than 3s
+
+>>Synchronization problem<<
+    Reason - Speed of automation script is faster than the application response
+    Cause - many factors like slow net, load for same page at same time etc..
+
+Solution-
+    Control the execution speed of the script.
+
+webdriver wait commands function better than Thread.sleep()
+
+Thread.sleep() - Java method
+
+WebDriver wait commands
+1. implicit wait
+2. explicit wait
+        a. fluent wait
+
+
+Exceptions
+
+NoSuchElementException - Sync problem(Locator is correct but page cant find the element)
+ElementNotFoundException - Locator is incorrect
+
+*IMP*
+Thread.sleep()
+Adv - easy to use
+DisAdv - if the time is not sufficient the we will get exception
+       - if the time is too much then we will reduced perf script
+       - it will wait for maximum time out, this will reduce the performance script
+       - need multiple times where sync prob happens
+
+WebDriver wait method Implicit
+
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+// this code will be applicable for every line of code as it is right below driver declaration(like window.maximize)
+
+Advantage-
+    Need to use one time till we close the driver, anywhere exception pops because of sync prob, the implicit wait will work on it.
+
+Implicit Wait adv-
+    1. single time/one statement
+    2. will not wait till maximum time if the element is available
+    3. applicable for all elements
+    4. easy to use
+
+If we put 5 seconds to implicitly wait, and the driver finds the element within two seconds, the driver wont wait till timeout.
+Its the maximum timeout to find an element
+
+DisAdvantage -
+    If element is taking more time than specified time, it throws exception
+
+(STD time is 10 seconds for testing. if it takes more than 10 sec, then the application is having perf issues)
+
+
+Explicit
+--------
+
+Decleration and application
+    after driver creation -
+    WebDriverWait myWait=new WebDriverWait(driver,Duration.ofSeconds(10)); //decleration
+    then apply it to the element that we need timeout to load
+    WebElement elementDesc= myWait.until(ExpectedConditions.visibilityOfElementLocated(By.Locator("Location")));
+
+This statement will wait untill[- method(condition)] the element is visible/located on the web page and returns the webelement
+
+Identification of the element is inclusive in explicit wait
+
+Even if we give explicit timeout, sometimes we get excepetions. thats why we use try catch method
+
+Explicit wait is 
+    - conditional based, it will work more effectievely
+    - finding element is inclusive (for some conditions)
+    - it will wait for condition to be true, then consider the time
+    - need to write multiple statement for multiple elements
+    - normally we dont use explicit wait for every element
+
+Popular conditions-
+ >alertIsPresent
+ >elementSelectionStateToBe
+ >elementToBeClickable
+ >elementToBeSelected
+ >frameToBeAvailableAndSwitchToIt
+ >presenceOfAllElementsLocatedBy
+ >presenceOfElementLocated
+ >textToBePresentInElement
+ >textToBePresentInElementLocated
+ >textToBePresentInElementValue
+ >titlels
+ >titleContains
+ >visibilityOf
+ >visibilityOfAllElements
+ >visibilityOfAllElementsLocatedBy
+ >visibilityOfElementsLocated
+
+ >invisibilityOfTheElementLocated
+ >invisibilityOfElementWithText
+ 
+
+Fluent Wait
+-----------
+    A variant of explicit wait but repeatedly tries to find the element till the given time by ignoring error
+
+
+Decleration Syntax-
+    Wait<WebDriver> myWait=new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(30))     //- max timeout
+				.pollingEvery(Duration.ofSeconds(5))     //- repeated hit every x sec
+				.ignoring(NoSuchElementException.class); //- ignores exception till the max timeout
+
+Assignment syntax
+
+WebElement userName = myWait.until(new Function<WebDriver, WebElement>()
+{
+			public WebElement apply(WebDriver driver)
+    {
+				return driver.findElement(By.Locator("Location"));
+	}
+});
+		userName.sendKeys("Admin");
+
+-END-
