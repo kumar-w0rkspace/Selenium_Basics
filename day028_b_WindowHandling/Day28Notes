@@ -1,0 +1,56 @@
+Day28 - Navigational methods
+===========================
+
+driver.navigate -
+    navigate().to(url)     --- navigate to specified page
+    navigate().back()      --- go backward a page
+    navigate().forward()   --- go forward a page
+    navigate().refresh()   --- page refresh
+
+driver.navigate().to(baseUrl);
+// same as driver.get but internal function is different
+
+diff b/w get and navigate.to
+----------------------------
+    get     - only allow url in string
+    nav.to  - allows passing url as string and as an URI object that converted to URL
+    >>nav.to uses get method internally for string format. If its obj format, it will convert the obj into string format and pass to get method.<<
+       URI object eg         - URI myUri = new URI("webAddress"); // needs URI import and URISyntaxException
+       converting URI to URL - URL myUrl = myUri.toURL; // needs URL import and MalformedURLException
+
+Navigation with getWindowHandle/s
+---------------------------------
+    driver.get link1
+    driver.get link2
+
+Finding id using indexnumber
+----------------------------
+    Set <String> windowIDs=driver.getWindowHandles();  // getting windows handle ids
+    List <String> windowList=new ArrayList(windowIDs); //to convert set to list because Set dont have indexing
+    String tabOne=widowList.get(0);
+    String tabTwo=widowList.get(1);
+    driver.switchTo().window(tabOne);
+
+Finding id using forloop (more than 3 tabs)
+------------------------------------------
+    for (String str : windowsList)  //iterate windowsList contents on str
+    {   
+        String pageTitle=driver.switchTo().window(str).getTitle();  //for window str, get the title and save it to string
+        if (pageTitle.equals("OrangeHRM"))  //picking which title to iterate and stop
+          {   		
+            System.out.println(driver.getTitle());
+	      }
+    }
+
+Specific browser window closing
+-------------------------------
+for (String winId:windowIDs)
+    {
+	    String pageTitle=driver.switchTo().window(winId).getTitle();
+		if (pageTitle.equals("OrangeHRM")|| (pageTitle.equals("OrangeHRM")) 
+        {
+  		  driver.close();
+		}
+    }
+
+-END-
