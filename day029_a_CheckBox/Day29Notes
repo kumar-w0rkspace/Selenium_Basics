@@ -1,0 +1,112 @@
+Day29 - CheckBoxes & Alerts
+===========================
+
+Links - https://the-internet.herokuapp.com/javascript_alerts
+
+Handling CheckBoxes & Alerts
+----------------------------
+usually we identify and use click method for selecting and unselecting
+
+Single box
+    driver.findElement(By.xpath("//input[@id='monday']")).click(); //selecting single checkbox
+ 
+Multiple box
+    find a common element and use forloop to select all checkbox
+    use xpath for those elements only by filtering required elements
+
+    eg 1.For Loop ->
+    List<WebElement> checkboxes = driver.findElements(By.xpath("//input[@class='form-check-input' and   @type='checkbox']"));
+
+	    	for (int i = 0; i < checkboxes.size(); i++)
+            {
+    			checkboxes.get(i).click();
+	    	}
+
+    eg 2. For Each loop -> (cannot select specific index)
+    List<WebElement> checkboxes = driver.findElements(By.xpath("//input[@class='form-check-input' and @type='checkbox']"));
+			for (WebElement temp : checkboxes)
+            {
+	 		    temp.click();
+			}
+
+    eg 3. select last n checkbox ->
+    for (int i = 3; i < checkboxes.size(); i++)
+    { 
+      checkboxes.get(i).click();
+    }
+    // to select specific checkbox, need to know a condition
+    // total no. of checkbox - number of checkbox to select = starting index
+
+    eg 4. Select first n checkboxes ->		
+   	for (int j=0; j<2; j++)  //start with 0, and repeat till n
+    {    
+	    checkboxes.get(j).click();
+	}
+
+
+Deselect selected checkboxes
+--------------------------
+    for (int i=0; i<checkboxes.size();i++) // entering forloop
+    { 
+    	if (checkboxes.get(i).isSelected())  //using isSelected function to see if its selected or not. if yes, then enter if block
+        { 
+    		checkboxes.get(i).click();
+		}
+    }
+
+
+Handling Alerts and popups
+=========================
+
+3 types of alerts
+    normal alert
+    confirmation alert
+    prompting alert
+
+**>>Alert is not a webelement and cant inspect it<<**
+
+1> Normal Alert window  (Just OK button)
+-----------------
+accept method ->
+    driver.switchTo().alert().accept();   //using alert function by switching to alert
+    >the return type of alert function is Alert
+    >then use the alert element to do various functions on it like getText, accept etc
+
+2> Confirmation alert  (OK and Cancel button)
+-------------------
+accept or dismiss method
+    driver.switchTo().alert().dismiss();
+
+3> Prompt Alert (input box, ok, cancel)
+------------
+Object of Alert
+    Alert myAlert = driver.switchTo().alert(); //make it into an Alert object to do multiple functions
+    myAlert.sendKeys("Welcome");
+
+OR
+    driver.switchTo().alert().sendKeys("Welcome");
+
+WITHOUT USING switchTo command
+---------------------------
+we have to use explicit wait
+    WebDriverWait myWait =new WebDriverWait(driver,Duration.ofSeconds(5));
+    Alert myAlert= myWait.until(ExpectedConditions.alertIsPresent()); //using subfunctions of until
+
+Special Alert - Authenticated alert(login)
+------------------------------------
+Some websites might ask login or other stuff through authentication alert
+>>switchTo and wait.until(Explicit) wont work.<<
+    we cant function with it, but we can avoid it by injection
+    we need to inject the username and pw along with url
+
+https://the-internet.herokuapp.com/basic_auth -> this is the page we need to navigate.
+    we need to add the name and pw with a specific syntax to bypass auth alert
+    https://username:password@the-internet.herokuapp.com/basic_auth // will bypass the auth alert
+
+eg- 
+    driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
+syntax - 
+    driver.get("https://username:password@url)"
+
+-END-
+
