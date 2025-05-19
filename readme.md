@@ -1,5 +1,26 @@
-Repo of Selenium done in sessions
+Selenium (v4.32.0)
+==================
 
->> Topics --->
-	>
+Automation concepts done in sessions
+
+>>Topics-->
+
+	> Setting up dependencies
+
+	> Locators (basic & advanced)
+
+	> Webdriver Methods
+
+	> Wait Methods
+
+	> Window (Tab) Handling
+
+	> Checkbox
+
+	> Alerts
+
+
+
+>>Framework-->
+
 	>
