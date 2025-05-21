@@ -1,0 +1,80 @@
+Day32 - Auto Suggest Drop Down and TABLES
+========================================
+
+Auto suggest dd is dynamic
+-------------------------
+google search suggestion xpath format - //ul[@role='listbox']//li//div[@role='option']
+objective is to find the unique xpath and find the correct path while handling dynamic suggestions
+
+Tables
+---------
+three type of tables
+1. static web table  - fixed no. of rows and columns including data
+2. dynamic web table - rows change depending on the data (Columns are fixed)
+3. pagination web table - data continues to next page in the table
+
+web tables.
+capture data from tables and do validations
+
+if we can add or remove data from a table, then it is dynamic/pagination table
+
+element tags
+table - whole table
+tr - table row
+th - table header
+td - table data
+
+find total no of rows in a table- find out the tr count by making the table into a list of webelement
+find total no of columns in a table - find the td/th counts 
+
+if there is only one table, no need to make the element to a list
+
+-capturing data from x colum and y row
+driver.findElement(By.xpath("//table[@name='BookTable']//tr[x]//td[y]")).getText()
+which ever data we want to capture, find the row number and columnumber by xpath a d use gettext()
+
+-reading all the data from table (inc row and col)
+using nested forloop
+
+driver.get("https://testautomationpractice.blogspot.com/");
+int rows = driver.findElements(By.xpath("//table[@name='BookTable']//tr")).size();
+int cols = driver.findElements(By.xpath("//table[@name='BookTable']//tr//td")).size();
+System.out.println("Rows : " + rows + " " + "Columns : " + cols);
+
+	for (int r = 2; r <= rows; r++) {
+		for (int c = 1; c <= cols; c++) {
+			String values =driver.findElement(By.xpath("//table[@name='BookTable']//tr["+r+"]//td["+c+"]")).getText();
+				System.out.println(values);
+			}
+		}
+
+use + and " for using the integer outside string literal
+
+-retrieve data based on condition
+print booknames whose author is mukesh - eg
+----------------------------------------
+steps - check for the author name, then use condition if the name is mukesh, then get data from book colum
+>printing all the authors
+for(int r=2; r<rows; r++) {
+String authorName = driver.findElement(By.xpath("//table[@name='BookTable']//tr["+r+"]//td[2]")).getText();
+			//making the column static and iterating with each rows 
+			System.out.println(authorName);
+
+>checking for the author name and finding his books
+
+if (authorName.equals("Mukesh")) {
+String bookName = driver.findElement(By.xpath("//table[@name='BookTable']//tr["+r+"]//td[1]")).getText();
+System.out.println(bookName + "\t" + authorName);
+	} 
+}
+
+-find total price of all the books
+		int total =0;
+		for (int r = 2; r <=rows; r++) {
+			String price = driver.findElement(By.xpath("//table[@name='BookTable']//tr["+r+"]//td[4]")).getText(); //gettext returns string
+			System.out.println(price);
+			total = total+ Integer.parseInt(price);   //converting string to integer
+		}
+		System.out.println("Total price of books are "+ total);
+
+-End-
