@@ -31,7 +31,7 @@ if there is only one table, no need to make the element to a list
 
 -capturing data from x colum and y row
 driver.findElement(By.xpath("//table[@name='BookTable']//tr[x]//td[y]")).getText()
-which ever data we want to capture, find the row number and columnumber by xpath a d use gettext()
+which ever data we want to capture, find the row number and columnumber by xpath and use gettext()
 
 -reading all the data from table (inc row and col)
 using nested forloop
