@@ -58,5 +58,8 @@ List of demo websites for different element / functionality tests
 19. https://blazedemo.com/
 	> Topic - Tables
 
-20. https://demo.opencart.com/admin/
+20. https://demo.opencart.com/admin/ (Locked by looped captcha)
+	> Multiple Functionalities
+
+21. https://practice.expandtesting.com/
 	> Multiple Functionalities
