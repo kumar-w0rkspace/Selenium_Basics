@@ -1,0 +1,78 @@
+Day33 Dynamic Table and Pagination
+==================================
+
+Links -> https://demo.opencart.com/admin/index.php
+
+complex than normal table
+
+https://demo.opencart.com/admin/index.php > demo ,demo > customers > csustomers > table
+
+reading all data from tables
+---------------------------
+total no. of pages,
+click on each and every page
+read data from each page
+
+if we want to do multiple operations to an element, its better to take the element as a webelement.
+
+login to https://demo.opencart.com/admin/index.php and use demo and demo as cred
+
+		WebElement userName = driver.findElement(By.xpath("//input[@id='input-username']"));
+		userName.clear();
+		userName.sendKeys("demo");
+		WebElement passWord = driver.findElement(By.xpath("//input[@id='input-password']"));
+		passWord.clear();
+		passWord.sendKeys("demo");
+
+clicking on customers > customers submenu
+		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		
+		driver.findElement(By.xpath("//a[contains(text(),'Customers')]")).click();
+		driver.findElement(By.xpath("//ul[@id='collapse-5']//a[contains(text(),'Customers')]")).click();
+		
+handling data in table
+
+capturing number of pages dynamically -
+------------------------------------- 
+find out the pagination list and find total no of pages first
+
+eg: Showing 1 to 10 of 6657 (500 Pages)
+
+here we need to get the text of 500 pages from the webpage dynamically
+so we use substring method to split a string
+
+String str = "Showing 1 to 10 of 6657 (500 Pages)";
+
+str.indexOf("(") + 1; - returns the index number of ( and add one value to it to reach the 5 of 500)
+str.indexOf("Pages") - 1; - returns the index number of Pages and substract one value to account the space {P or Pages}
+
+so 
+str.substring(str.indexOf("(") + 1, str.indexOf("Pages") - 1);  - returns string value 500
+then convert the string value to integer value by using Integer.parseInt
+
+the code is -
+----------- 
+		String countText = driver.findElement(By.xpath("//div[@class='col-sm-6 text-end']")).getText(); //showing 1 to 10 of 6657 (500 Pages)
+		int pageCount = Integer
+				.parseInt(countText.substring(countText.indexOf("(") + 1, countText.indexOf("Page") - 1));
+
+repeating pages with forloop and getting data -
+----------------------------------------------- 
+for(int p=1;p<pageCount;p++) { //entering for loop for repeating pages
+			
+			if (p>1) {  //if by default, the page loads to anyother page than 1
+				
+				WebElement activePage=	driver.findElement(By.xpath("//ul[@class='pagination']//*[text()='"+p+"']"));
+				activePage.click(); // if page is greater than one, it will switch to the pagenumber in forloop first as mentioned by p
+			}
+
+reading first two columns data from the p page
+------------------------------------------------
+		int noOfRows = driver.findElements(By.xpath("//table[@class='table table-bordered table-hover']//tbody//tr")).size();
+			
+		for (int r = 0; r <=noOfRows; r++) {
+			String custName =driver.findElement(By.xpath("//table[@class='table table-bordered table-hover']//tbody//tr["+r+"]//td[2]")).getText(); // r changes, but c is 2
+			String eMail =driver.findElement(By.xpath("//table[@class='table table-bordered table-hover']//tbody//tr["+r+"]//td[3]")).getText();
+			System.out.println(custName +"\t"+ eMail);
+		} //will complete one page data capture and go to next page
+
