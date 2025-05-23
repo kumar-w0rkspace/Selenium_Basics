@@ -19,9 +19,13 @@ Automation concepts done in sessions
 
 	> Alerts
 
-	>
+	> Frames /iFrames
 
-	>
+	> DropDowns
+
+	> WebTables
+
+	> Pagination
 
 
 
