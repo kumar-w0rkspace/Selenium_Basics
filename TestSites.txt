@@ -65,4 +65,4 @@ List of demo websites for different element / functionality tests
 	> Multiple Functionalities
 
 22. https://dummyticket.com/dummy-ticket-for-visa-application/
-	> Multiple Functionalities (Form based)
+	> Multiple Functionalities (Form based) 
