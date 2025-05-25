@@ -1,0 +1,87 @@
+Day34 Date Pickers & Calenders
+==============================
+Link -> https://jqueryui.com/datepicker/
+-----------------------
+
+Date picker is a customised element which needs automation script depending on design
+each webapp has a method of date format. if we write a code for a datepicker on a webapp, it can be reused again if the date has same method
+
+1. if there is inputbox in datefield, we can just use sendkeys to enter date.
+2. even if there is inputbox, we can only pick date through datepicker element
+
+SendKeys()
+---------
+
+the date element is inside a frame. so we have to switchto the frame
+
+driver.get > driver.switchto() > driver.findelement > sendkeys
+
+Datepicker Element (Logically we can only use either future or past date as per need, never both in single case (Except demo cases)
+--------------------
+
+driver.get > driver.switchto()
+driver.findelement(datepickerfield).click // to enable the date field
+need some input data in string
+String year;
+String month;
+String date;
+
+any data being provided into the webapp through automation should have srtring format
+````````````````````````````````````````````````````````````````````````````````````````
+first we need to capture the current year and month shown in date picker
+
+then we need to click the next button near the month and year to get the expected month and year (while loop)
+
+then pick the date
+eg :- the date 5 will not be on the same field for various months (Dynamic)
+the date will be on a webtable
+then pick all the date fields.
+eg Xpath - //table[@class='ui-datepicker-calendar']//tbody//tr//td  > this captures date field data excluding empty dates
+
+
+Datepicker with Year dropdown
+------------------------------
+the challenge is if we take a year, the month will be future or past depending on the current date
+
+after picking the year dropdown, we need to figure if the required month is past or future.
+use builtin method > month object
+
+exp month < current month - past
+exp month > current month - future
+
+to convert any month into object type, we need user defined method
+
+use hashmap to put month data using Month class
+
+extract the value of month as return
+
+	static Month convertMonth(String month) {
+		HashMap<String, Month> monthMap = new HashMap<String, Month>();
+		monthMap.put("January", Month.JANUARY);
+		monthMap.put("February", Month.FEBRUARY);
+		monthMap.put("March", Month.MARCH);
+		monthMap.put("April", Month.APRIL);
+		monthMap.put("May", Month.MAY);
+		monthMap.put("June", Month.JUNE);
+		monthMap.put("July", Month.JULY);
+		monthMap.put("August", Month.AUGUST);
+		monthMap.put("September", Month.SEPTEMBER);
+		monthMap.put("October", Month.OCTOBER);
+		monthMap.put("November", Month.NOVEMBER);
+		monthMap.put("December", Month.DECEMBER);
+
+		Month monthValue = monthMap.get(month);
+
+		if (monthValue == null) {
+			System.out.println("Invalid Month..");
+		}
+		return monthValue;
+	}
+
+
+expectedMonth.compareTo(currentMonth); returns either 0, greater than 0, or less than 0
+if the comparison value is less than 0 then expectedmonth is past month
+if the comparison value is greater than 0 then expectedmonth is future month
+if the comparison value is 0 then expectedmonth is same month
+syntax for example (error)
+

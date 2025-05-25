@@ -63,3 +63,6 @@ List of demo websites for different element / functionality tests
 
 21. https://practice.expandtesting.com/
 	> Multiple Functionalities
+
+22. https://dummyticket.com/dummy-ticket-for-visa-application/
+	> Multiple Functionalities (Form based)
