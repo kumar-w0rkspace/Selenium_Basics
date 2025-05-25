@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class AB_String_SubString_IndexOf {
 
 	public static void main(String[] args) {
+		// subtask
 		// exercise to split a string to just page numbers from the webpage
 		// Note - enter the string via console
 		// Write the string function to dynamically get the pages
