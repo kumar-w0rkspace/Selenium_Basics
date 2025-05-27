@@ -76,9 +76,6 @@ List of demo websites for different element / functionality tests
 25> https://swisnl.github.io/jQuery-contextMenu/demo.html
 	> jQuery
 
-26> https://dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html
-	> INSECURE WEBSITE (vm recommended)
-
 26> https://demo.guru99.com/test/drag_drop.html
 	> Drag and drop (+mult func)
 	
