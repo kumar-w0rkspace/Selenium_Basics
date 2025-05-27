@@ -1,0 +1,64 @@
+Day35 Mouse Actions
+===================
+
+Note - To work on mouse actions, there is a predefined selenium class called Actions
+
+Steps
+	Create an actions class object
+	access methods from actions object ref
+	eg-
+		Mouse hover 	--> moveToElement(element)
+		Right click 	--> contextClick(element)
+		Double click 	--> doubleClick(element)
+		Drag and drop	--> dragAndDrop(sourceElement, targetElement)
+		Slider (H/V)	--> 
+
+>> MouseHover
+	find and capture the element to a variable
+	create an object of Actions class
+	call the Actions method using the object reference
+	chain methods if necessary
+	finally use build().perform() methods for every action method
+eg-
+	WebElement laptopLink = driver.findElementBy(Loc);
+	Actions action = new Actions(driver);
+	action.moveToElement(button).moveToElement(laptopLink).build().perform();
+	
+	build - create an action (not mandatory, but is useful in some cases eg- create, then perform delayed)
+	perform - complete an action (It can create an action and complete an action)
+
+>> RightClick
+		WebElement rightClickElement = driver.findElementBy(Loc);
+		WebElement copyOption = driver.findElementBy(Loc);
+		
+		Actions act = new Actions(driver);
+	// 	act.moveToElement(rightClickElement).contextClick().moveToElement(copyOption).click().perform();
+Note -	can directly use contextmenu from action objRef	
+		act.contextClick(rightClickElement).moveToElement(copyOption).click().perform();
+		
+>> DoubleClick
+		WebElement dblClickBtn = driver.findElementBy(Loc);
+				
+		Actions act = new Actions(driver);
+	//  act.moveToElement(dblClickBtn).doubleClick().perform();
+Note -  can directly use doubleClick from action objRef	
+		act.doubleClick(dblClickBtn).perform();
+		
+Note -  While using these type of functions, we might not be able to get the text via getText()
+	    So we can use element.getDomProperty(attribute)
+	    This will return us the attribute value of the element
+	    >>getAttribute() is deprecated<<
+		
+>> DragAndDrop
+		WebElement firstItem = driver.findElement(By.xpath("//div[@id='item1']"));
+		WebElement dropZone = driver.findElement(By.xpath("//div[@id='dropzone']"));
+		
+		Actions act = new Actions(driver);
+		act.dragAndDrop(firstItem, dropZone).perform();
+		
+					>>Action vs Actions<<
+
+	Actions --> A selenium class that is performed to do the mouse actions
+	Action  --> An interface in selenium that is used to store custom user actions to perform later
+	
+	--END--
