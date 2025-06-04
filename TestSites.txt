@@ -79,3 +79,8 @@ List of demo websites for different element / functionality tests
 26> https://demo.guru99.com/test/drag_drop.html
 	> Drag and drop (+mult func)
 	
+27> https://automationexercise.com/
+	> inc tc
+
+28> https://vinothqaacademy.com/demo-page-healthcare/
+	> multi func

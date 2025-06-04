@@ -46,8 +46,8 @@ public class AC_b_DatePicker_Map_Reusable {
 					.getText();
 			Month expectedMonth = convertMonth(reqMonth);
 			Month monthDisplayed = convertMonth(currentMonth);
-			System.out.println(expectedMonth.toString());
-			System.out.println(monthDisplayed.toString());
+//			System.out.println(expectedMonth.toString());
+//			System.out.println(monthDisplayed.toString());
 			int result = expectedMonth.compareTo(monthDisplayed);
 
 			if (result < 0) {

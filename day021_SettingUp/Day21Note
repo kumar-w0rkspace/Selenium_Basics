@@ -5,32 +5,30 @@ Tools > Eclipse IDE, JDK, Maven Dependencies
 
 Selenium - IDE, WebDriver, Grid
 
-Selenium WebDriver is a Java Interface
+Selenium Webdriver is a Java Interface
 WebDriver is an API( Application Programming Interface)
+
 
 WebDriver (I)---- RemoteWebDriver (C)---> ChromeDriver, FireFoxDriver, EdgeDriver etc..
 
->>ChromeDriver----extends---->RemoteWebDriver---implements--->WebDriver<<
+ChromeDriver----extends---->RemoteWebDriver---implements--->WebDriver
 
-API - Basically, bypassing the UI layer of an app and talking directly to the logical layer and getting results
+API - Basically, bypassing the ui layer of an app and talking directly to the logical layer and getting results
 
 Why is WebDriver an API?
-------------------------
-Java calls on the WebDriver methods and the WebDriver will perform tasks on the browser.
+Java calls on the WebDriver methods and the webdriver will perform tasks on the browser.
 WebDriver talks to browser through W3C method (Selenium 4)
 It is working as an interface between the client(java) and browser
 
-Enviornment Setup
------------------
-Create Workspace-> Create Maven Project-> Download Dependencies (mvn repo -> version -> dependencies -> save)
+
+Enviornment Setup- mvn repo -> version -> dependencies -> save
+Create Workspace-> Create Maven Project-> Download Dependencies and work start
 
 
 TestCase
 --------
-Launch Browser
-Open URL demo.opencart
-Validate Title (getTitle, getTitle.equals)
-Close Browser
+Launch Browser, Open URL demo.opencart, Validate Title, Close Browser
+(getTitle, getTitle.equals)
 
     WebDriver driver = new EdgeDriver();  // initialising browser
     driver.get("url");                    // opening webpage

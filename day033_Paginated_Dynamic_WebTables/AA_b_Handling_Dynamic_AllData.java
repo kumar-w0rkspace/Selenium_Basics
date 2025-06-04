@@ -11,15 +11,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class AA_b_Handling_Dynamic_AllData {
 
 	public static void main(String[] args) throws InterruptedException {
-		
-		
+
 		WebDriver driver = new EdgeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
 		String baseUrl = "https://practice.expandtesting.com/dynamic-pagination-table";
 		driver.get(baseUrl);
-		// getting number of pages 
+		// getting number of pages
 		String text = driver.findElement(By.xpath("//div[@class='dataTables_paginate paging_simple_numbers']//li[5]/a"))
 				.getText();
 		int numberOfPages = Integer.parseInt(text);

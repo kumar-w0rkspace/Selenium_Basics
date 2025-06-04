@@ -13,7 +13,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class Xeg_xa_BlazeDemo {
 
 	public static void main(String[] args) {
-		/*
+		/*  
 		 * 1> go to https://blazedemo.com/ 
 		 * 2> select departure, destination 
 		 * 3> find available flights 

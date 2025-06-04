@@ -6,7 +6,6 @@ public class AC_BootStrap_Table {
 		// orangeHRM > admin > usermanagement
 		// self test exercise
 		// read username and roles
-		// self exercise
 
 	}
 

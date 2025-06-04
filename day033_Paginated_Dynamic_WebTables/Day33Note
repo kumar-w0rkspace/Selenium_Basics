@@ -76,4 +76,3 @@ reading first two columns data from the p page
 			System.out.println(custName +"\t"+ eMail);
 		} //will complete one page data capture and go to next page
 
---END--

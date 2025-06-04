@@ -17,7 +17,7 @@ public class AA_a_Handling_Dynamic {
 
 		String baseUrl = "https://practice.expandtesting.com/dynamic-pagination-table";
 		driver.get(baseUrl);
-		// getting number of pages 
+		// getting number of pages
 		String text = driver.findElement(By.xpath("//div[@class='dataTables_paginate paging_simple_numbers']//li[5]/a"))
 				.getText();
 		int numberOfPages = Integer.parseInt(text);

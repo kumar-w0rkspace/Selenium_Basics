@@ -12,6 +12,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class Xeg_aa_WindowHandles_Switch {
 
 	public static void main(String[] args) throws InterruptedException {
+
 		/*
 		 * baseUrl - https://testautomationpractice.blogspot.com/ 
 		 * 1> provide search parameter on the wiki icon 
@@ -36,16 +37,18 @@ public class Xeg_aa_WindowHandles_Switch {
 			result.click();
 		}
 
-		String seleniumTab =null;
+		String seleniumTab = null;
 		Set<String> tabsSet = driver.getWindowHandles();
 		for (String tab : tabsSet) {
 			String title = driver.switchTo().window(tab).getTitle();
-			if (title.contains("Selenium (software)")) seleniumTab = driver.getWindowHandle();
-			else driver.close();
+			if (title.contains("Selenium (software)"))
+				seleniumTab = driver.getWindowHandle();
+			else
+				driver.close();
 		}
-		
+
 		driver.switchTo().window(seleniumTab);
-		System.out.println("Title: "+driver.getTitle());
+		System.out.println("Title: " + driver.getTitle());
 
 		System.out.println("\nExplanation of Selenium Software from Wikipedia:\n\n"
 				+ driver.findElement(By.xpath("//div[@id='mw-content-text']//p[3]")).getText());

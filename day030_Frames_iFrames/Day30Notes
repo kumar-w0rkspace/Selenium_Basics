@@ -4,51 +4,52 @@ Day30 - Frames and iFrames
 Links -> https://ui.vision/demo/webtest/frames/
 
 >>Frames and iframes are not same, but worked with the same way<<
-	Showing embedded webpages on a webpage is iframe
+    Showing embedded webpages on a webpage is iframe
 
 Tags -
-	iframe, frame or form and we cant directly inspect the embedded page
-	driver is on the basic page and we have to switch page from main to embedded
-	(Selectors hub will prompt that the eleement is inside a frame)
+    iframe, frame or form and we cant directly inspect the embedded page
+    driver is on the basic page and we have to switch page from main to embedded
+    (Selectors hub will prompt that the eleement is inside a frame)
 
 Syntax
-	driver.switchTo().frame(attributes); (id, name, webelement)
+    driver.switchTo().frame(attributes); (id, name, webelement)
 
 3 ways to switch to frame-
-	1. driver.switchto().frame(name);
-	2. driver.switchto().frame(id);
-	3. driver.switchto().frame(WebElement);
- 	4. driver.switchto().frame(index); 
+    1. driver.switchto().frame(name);
+    2. driver.switchto().frame(id);
+    3. driver.switchto().frame(WebElement);
+    4. driver.switchto().frame(index); 
 >index is only prefered when there is only one frame in page<
  
-example 
-	driver.get("https://ui.vision/demo/webtest/frames/"); //url
-	WebElement firstFrame = driver.findElement(By.xpath("//frame[@src='frame_1.html']")); // making a webelement of the frame
- 	driver.switchTo().frame(firstFrame); // switching to frame
+eg.1
+
+    driver.get("https://ui.vision/demo/webtest/frames/"); //url
+    WebElement firstFrame = driver.findElement(By.xpath("//frame[@src='frame_1.html']")); // making a webelement of the frame
+    driver.switchTo().frame(firstFrame); // switching to frame
 	driver.findElement(By.xpath("//input[@name='mytext1']")).sendKeys("entered Frames"); // sending keys to frame content
 
 
 switching from frame to get(urlpage)
-	driver.switchto().defaultContent(); // go back to first page
+    driver.switchto().defaultContent(); // go back to first page
 
 
 **Interacting with Inner iFrames**
 --------------------------------
-	If there is an iframe inside a frame, we need to interact with the outer frame.
-	Then switch to the innerframe using index( if only one iframe is inside) and work on it.
-	Then use defaultContent() method once to go back to landing page
+    If there is an iframe inside a frame, we need to interact with the outer frame.
+    Then switch to the innerframe using index( if only one iframe is inside) and work on it.
+    Then use defaultContent() method once to go back to landing page
 
 >It will be easier to open the inner iframe in new tab and pick the elements then and use it on code.<
 
-	driver.get("https://ui.vision/demo/webtest/frames/");
-	WebElement frameThree= driver.findElement(By.xpath("//frame[@src='frame_3.html']"));
-	driver.switchTo().frame(frameThree);   //switching to frame3
-	driver.findElement(By.xpath("//input[@name='mytext3']")).sendKeys("got here");
+        driver.get("https://ui.vision/demo/webtest/frames/");
+		WebElement frameThree= driver.findElement(By.xpath("//frame[@src='frame_3.html']"));
+		driver.switchTo().frame(frameThree);   //switching to frame3
+		driver.findElement(By.xpath("//input[@name='mytext3']")).sendKeys("got here");
         
 interacting with iframe inside frameThree
-	driver.switchTo().frame(0);     //only one frame at current location and the index is always 0
-	driver.findElement(By.xpath("//div[@id='i8']//div[@class='AB7Lab Id5V1']")).click();  //content inside iframe
-	driver.switchTo().defaultContent();
+		driver.switchTo().frame(0);     //only one frame at current location and the index is always 0
+	 	driver.findElement(By.xpath("//div[@id='i8']//div[@class='AB7Lab Id5V1']")).click();  //content inside iframe
+		driver.switchTo().defaultContent();
 
 
 Use javaScriptExecutor way if we get element intercepted exception
