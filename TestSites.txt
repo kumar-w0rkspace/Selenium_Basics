@@ -84,3 +84,9 @@ List of demo websites for different element / functionality tests
 
 28> https://vinothqaacademy.com/demo-page-healthcare/
 	> multi func
+
+29> https://techbeamers.com/selenium-practice-test-page/
+	> Practice test page
+
+30> https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/
+	> Sliders only

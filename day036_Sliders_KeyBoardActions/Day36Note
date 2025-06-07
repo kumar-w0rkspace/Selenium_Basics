@@ -1,0 +1,32 @@
+Day36 MouseSliders and KeyBoard Actions
+==================================
+
+Sliders
+-------
+	> Sliders are commonly seen in eCommerce apps (Price range etc)
+	> Sliders are a lot like drag and drop, but the difference is there is no drop point
+	> If we can find the element to slide, then we can set the distance by using Point class in selenium
+	
+Note - We find the current position of the element using element.getLocation() method
+	   which returns the current position of element in Point class object type (Selenium class)
+	   element.getLocation().getX() -> returns the x axis only
+	   element.getLocation().getY() -> returns the y axis only
+
+After getting the location of the slider element, we need to see which axis the slider has to be moved
+We need to use the mouse actions class to perform the movement also
+eg:
+	WebElement minSlider = driver.findElement(By.xpath("//span[1]"));
+	Actions act = new Actions(driver);
+	syso(minSlider.getLocation());
+	act.dragAndDropBy(minSlider, 100, 250).perform();
+
+Here the minSlider is the slider button we need to move.
+We perform the movement by dragAndDropBy() method which takes a webelement, x axis and y axis as parameters
+
+Note >> There will always be some minor tolerance(+-5) in the axis location, but it will be close to required parameter.<<
+	The minimum and maximum sliders will have to go positive or negative values to adjust to the webpage
+	eg: min slider --> +100 x and same y
+		max slider --> -100 x and same y
+		
+Keyboard Actions
+''''''''''''''''
