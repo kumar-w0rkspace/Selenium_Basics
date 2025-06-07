@@ -90,3 +90,6 @@ List of demo websites for different element / functionality tests
 
 30> https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/
 	> Sliders only
+
+31> https://text-compare.com/
+	> Keyboard Actions

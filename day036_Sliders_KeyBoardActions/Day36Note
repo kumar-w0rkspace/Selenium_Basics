@@ -1,5 +1,5 @@
-Day36 MouseSliders and KeyBoard Actions
-==================================
+Day36 - MouseSliders and KeyBoard Actions
+=========================================
 
 Sliders
 -------
@@ -30,3 +30,47 @@ Note >> There will always be some minor tolerance(+-5) in the axis location, but
 		
 Keyboard Actions
 ''''''''''''''''
+We can use Actions class to use keyboard actions also
+Most common keyboard actions on a webpage > 
+	Enter, Escape, Tab, SpaceBar, Ctrl S, Ctrl c, Ctrl V etc
+
+Syntax for pressing Control + A
+--> Actions act = new Actions(driver);
+	act.keyDown(Keys.CONTROL).sendKeys("A").keyUp(Keys.CONTROL).perform();
+// here, we are doing the steps we do manually via code.
+   keyDown - Press
+   keyUp - Release
+   >> imports Keys class from Selenium <<
+Alternatively we can chain the keys command
+eg- Action myKeyBoardAct = act.keyDown(Keys.CONTROL).sendKeys("A").keyUp(Keys.CONTROL).keyDown(Keys.CONTROL)
+				.sendKeys("C").keyUp(Keys.CONTROL).keyDown(Keys.TAB).keyUp(Keys.TAB).keyDown(Keys.CONTROL).sendKeys("V")
+				.keyUp(Keys.CONTROL).build();
+		   myKeyBoardAct.perform();
+This whole script does - Select all > Copy > go to next tab > Paste > build action > then use perform to execute the script
+	
+Three keys combination
+	act.keyDown(Keys.CONTROL.keyDown(Keys.SHIFT).sendKeys("A").keyUp(Keys.SHIFT).keyUp(Keys.CONTROL).perform();
+	Note - We will have to release the keys in reverse order of how we pressed
+	
+New Tab using Keyboard actions
+------------------------------
+We can open new window using keyboard controls also
+How?
+	clicking a link holding control will open it in new tab(driver will still be focused on parent window)
+syntax
+	act.keyDown(Keys.CONTROL).click(pageToOpen).keyUp(Keys.CONTROL).perform();
+
+switching windows syntax (skipped obj reference creation)
+	driver.switchTo.window(new ArrayList <String>(driver.getWindowHandles()).get(i));
+
+New Tab/ new Window with driver focus
+-------------------------------------
+From Selenium 4 onwards there's a method where we can open new tab and driver will be focused on it when called.
+Tab eg - 
+	driver.switchTo.newWindow(WindowType.TAB);
+	driver.navigateTo(url); (Driver will be opening new tab and is focused on it)
+Window eg -
+	driver.switchTo.newWindow(WindowType.WINDOW);
+	driver.get(url);
+
+		--END--
