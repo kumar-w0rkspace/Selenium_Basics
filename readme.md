@@ -27,6 +27,12 @@ Automation concepts done in sessions
 
 	> Pagination
 
+	> Date Pickers
+
+	> Actions (Mouse / Keyboard)
+
+	> 
+
 
 
 >>Framework-->
