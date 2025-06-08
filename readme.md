@@ -6,30 +6,74 @@ Automation concepts done in sessions
 >>Topics-->
 
 	> Setting up dependencies
+	  |
+	   `--> pom.xml
 
-	> Locators (basic & advanced)
+	> Locators
+	  | | | |
+	  | | |  `--> basic
+	  | |  `----> Css
+	  |  `------> xPath
+	   `--------> xPath Axes
 
 	> Webdriver Methods
+	  | | | 
+	  | |  `--> get
+	  |  `----> conditional
+	   `------> close/ quit
 
 	> Wait Methods
+	  | | 
+	  |  `--> Implicit
+	   `----> Explicit
+		  |
+		   `--> Fluent	
 
-	> Window (Tab) Handling
+	> Window Handling
+	  | | 
+	  |  `--> Tab navigation
+	   `----> SwitchTo
 
 	> Checkbox
+  	  | | 
+	  |  `--> Simple
+	   `----> Multiple
 
 	> Alerts
+	  | | | 
+	  | |  `--> Simple
+	  |  `----> Confirmation
+	   `------> Prompt
 
-	> Frames /iFrames
+	> Frames
+	  | | | 
+	  | |  `--> Frames
+	  |  `----> iFrames
+	   `------> JSscript Executor
 
 	> DropDowns
+	  | | | | 
+	  | | |  `--> Simple
+	  | |  `----> BootStrap
+	  |  `------> Hidden
+	   `--------> AutoSuggest
 
 	> WebTables
-
-	> Pagination
+	  | | | 
+	  | |  `--> Static
+	  |  `----> Dynamic
+	   `------> Paginated
 
 	> Date Pickers
+	  | | 
+	  |  `--> Direct Input
+	   `----> Reusable Map
 
-	> Actions (Mouse / Keyboard)
+	> Actions
+	  | | | 
+	  | |  `--> Mouse
+	  |  `----> Keyboard
+	   `------> Action Vs Actions
 
 	> 
 
