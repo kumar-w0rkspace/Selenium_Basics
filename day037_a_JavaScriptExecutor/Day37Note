@@ -3,31 +3,32 @@ Day37 - JavScript Executors
 JavaScript is a scripting language used for various functions in web development
 JavaScript Executor is an interface in selenium which is implemented by RemoteWebDriver class
 	>>We can use executeScript() to execute JS statements<<
-____________________________________________________________________________________
-			Hierarchy of Selenium interfaces and classes
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			
-						   SearchContext(i)					|| -> implements
-								 |						    |  -> extends
-							WebDriver(i)					(i)-> interface
-								 ||							(C)-> Class
-								 ||
-								 ||
-JavaScriptExecutor(i)====>  RemoteWebDriver(C) <==== TakeScreenShot(i)
-							 |  |  |  |  |
-							 |  |  |  |  |
-		  -------------------   |  |  |   ---------------------
-		 |           -----------   |   ----------              |
-		 |			|		   Chromium          |             |
- InternetExplorer  FireFox     Driver(C)       Opera         Safari
-	 Driver(C)	  Driver(C)       | |         Driver(C)     Driver(C)
-					 			  | |
-					    ----------   -----------
-					   |                        |
-					 Chrome 				   Edge
-				    Driver(C)			 	 Driver(C)
-____________________________________________________________________________________
-	
+ _______________________________________________________________________________________
+|										        |
+|			Hierarchy of Selenium interfaces and classes			|
+|			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~			|	
+|											|
+|				  SearchContext(i)		|| -> implements	|
+|				       |			|  -> extends		|
+|				   WebDriver(i)			(i)-> interface		|
+|				       ||			(C)-> Class		|
+|				       ||						|
+|				       ||						|
+|    JavaScriptExecutor(i)====>  RemoteWebDriver(C) <==== TakeScreenShot(i)		|
+|	  			  |  |  |  |  |						|
+|				  |  |  |  |  |						|
+|              -------------------   |  |  |   -------------------			|
+|             |           -----------   |   -----------           |			|
+| 	      |		 |	     Chromium          |          |			|
+|   InternetExplorer  FireFox        Driver(C)       Opera      Safari			|
+|       Driver(C)     Driver(C)        | |          Driver(C)  Driver(C)		|
+|			 	       | |						|
+|			     ----------   ----------					|
+|			    |                       |					|
+|			 Chrome 		   Edge					|
+|		        Driver(C)		 Driver(C)				|
+|_______________________________________________________________________________________|
+										        	
 Note -
 	When we perform certain action on the webelement (eg click(), sendKeys(), clear()) these actions internally call the JS
 	These JS execute the action on the webelement.
@@ -97,9 +98,4 @@ Multiple
 	WebElement uploadButton = driver.findElementBy(loc);
 	uploadButton.sendKeys(file1+ "\n" + file2 + "\n" + file3 + "\n" + ......fileN);
 
-
-
-
-
-
-
+		--END--
