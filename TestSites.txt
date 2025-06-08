@@ -93,3 +93,9 @@ List of demo websites for different element / functionality tests
 
 31> https://text-compare.com/
 	> Keyboard Actions
+
+32> https://home.tobias-schwarz.com/tests/viewport/scroll-horizontal-scalable.php
+	> Vertical / Horizontal page slide
+
+33> https://davidwalsh.name/demo/multiple-file-upload.php
+	> file uploads

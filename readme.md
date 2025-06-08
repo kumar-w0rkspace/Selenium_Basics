@@ -75,8 +75,17 @@ Automation concepts done in sessions
 	  |  `----> Keyboard
 	   `------> Action Vs Actions
 
-	> 
+	> JSExecutors
+	  | | | 
+	  | |  `--> Execute Script
+	  |  `----> Scroll Bar Vertical / Horizontal
+	   `------> Page ZoomIn / ZoomOut
 
+	> FileUpload
+	  |
+	   `--> SendKeys
+	
+	>
 
 
 >>Framework-->

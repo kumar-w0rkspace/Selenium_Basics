@@ -1,0 +1,105 @@
+Day37 - JavScript Executors
+===========================
+JavaScript is a scripting language used for various functions in web development
+JavaScript Executor is an interface in selenium which is implemented by RemoteWebDriver class
+	>>We can use executeScript() to execute JS statements<<
+____________________________________________________________________________________
+			Hierarchy of Selenium interfaces and classes
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			
+						   SearchContext(i)					|| -> implements
+								 |						    |  -> extends
+							WebDriver(i)					(i)-> interface
+								 ||							(C)-> Class
+								 ||
+								 ||
+JavaScriptExecutor(i)====>  RemoteWebDriver(C) <==== TakeScreenShot(i)
+							 |  |  |  |  |
+							 |  |  |  |  |
+		  -------------------   |  |  |   ---------------------
+		 |           -----------   |   ----------              |
+		 |			|		   Chromium          |             |
+ InternetExplorer  FireFox     Driver(C)       Opera         Safari
+	 Driver(C)	  Driver(C)       | |         Driver(C)     Driver(C)
+					 			  | |
+					    ----------   -----------
+					   |                        |
+					 Chrome 				   Edge
+				    Driver(C)			 	 Driver(C)
+____________________________________________________________________________________
+	
+Note -
+	When we perform certain action on the webelement (eg click(), sendKeys(), clear()) these actions internally call the JS
+	These JS execute the action on the webelement.
+
+Why JSExecutor?
+	Sometimes, these methods wont be able to execute the JS for various reasons.
+	These scenario, an exception will be thrown named ElementInterceptedException (radio button, input box, checkbox elements).
+	As a workaround, we can directly execute the JS statements by calling executeScript() method.
+	
+Creating a JSExecutor variable
+-->
+	WebDriver driver = new EdgeDriver();
+//	JavascriptExecutor js = driver; // not possible as there is no direct relation between WebDriver and JSExecutor
+	JavascriptExecutor js = (JavascriptExecutor)driver; // possible as the driver is an object of EdgeDriver class which we are storing into JSE interface
+	>> JSE is a parent of EdgeDriver (upcasting)	
+-->
+	EdgeDriver driver = new EdgeDriver();
+	JavascriptExecutor js = driver; //no need to type cast as the parent class variable can hold child class variable
+
+Syntax
+	WebDriver driver = new EdgeDriver();
+	WebElement name = driver.findElement(By.xpath("//input[@id='name']"));
+	JavascriptExecutor jsE = (JavascriptExecutor) driver; // upcasting
+	jsE.executeScript("arguments[0].setAttribute('value', 'John')", name); // alternate for sendKeys
+	jsE.executeScript("arguments[0].click()", driver.findElement(By.xpath("//input[@id='male']"))); // alternate for click (avoiding variable creation)
+
+Explanation-
+		"arguments[0].setAttribute('value', 'John')" --> JS statements
+		 name --> webelement
+		 the element we passed(name) will be stored in arguments[0]
+		 setAttribute('value', 'John') is JS method which sets the attribute of value - John
+
+Scrolling the page
+''''''''''''''''''
+	SCROLLBAR IS NOT A WEBELEMENT
+	The scroll bar belongs to browser. Not application
+	Scroll bar may or may not appear depending on size of page
+	We can handle the scrolldown or up only though JSE
+
+Vertical scrolling (Conditions)
+	> Till fixed pixel --> js.executeScript("window.scrollBy(0,1500)", ""); 
+	> Till a specific element is visible --> js.executeScript("arguments[0].scrollIntoView();", element);
+	> Till the end of page --> js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+	> Go back to top --> js.executeScript("window.scrollBy(0,-document.body.scrollHeight)");
+	  >>js.executeScript("return window.pageYOffset;"); --> returns the value of Y offset
+
+Horizontal scrolling (Conditions)
+	> Till fixed pixel --> js.executeScript("window.scrollBy(1500,0)", ""); 
+	> Till a specific element is visible --> js.executeScript("arguments[0].scrollIntoView();", element);
+	> Till the end of page --> js.executeScript("window.scrollBy(document.body.scrollWidth,0)");
+	> Go back to top --> js.executeScript("window.scrollBy(-document.body.scrollWidth,0)");
+	  >>js.executeScript("return window.pageXOffset;"); --> returns the value of X offset
+
+Adjusting zoom level of page (compress or expand)
+	> Zoom to % --> js.executeScript("document.body.style.zoom='200%'"); // document refers to the webpage
+____________________________________________________________________________________________________________________
+
+File Upload using sendKeys
+Single
+	WebElement uploadButton = driver.findElementBy(loc);
+	uploadButton.sendKeys("D\\path\\to\\file\\filename.ext");
+	
+Multiple
+	String file1 = "D\\path\\to\\file1\\filename.ext"
+	String file2 = "D\\path\\to\\file2\\filename.ext"
+	String file3 = "D\\path\\to\\file3\\filename.ext"
+	WebElement uploadButton = driver.findElementBy(loc);
+	uploadButton.sendKeys(file1+ "\n" + file2 + "\n" + file3 + "\n" + ......fileN);
+
+
+
+
+
+
+
