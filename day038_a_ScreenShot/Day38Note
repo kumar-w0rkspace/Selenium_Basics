@@ -1,0 +1,131 @@
+Day38 - ScreenShots / DriverOptions
+===================================
+Scenario for taking screenshots :-
+	>We dont take each steps or process in screenshot
+	>Imagine we have 10 steps in test case
+	>While automating all steps, if a particular step failed, based on condition we will take screenshot
+
+Screenshot Types
+~~~~~~~~~~~~~~~~
+	FullPage
+	Specific area of page (Selenium 4.0)
+	WebElement (Selenium 4.0)
+	
+Just like JSE, we need to create object reference of the interface TakesScreenshot on driver object with upcasting
+
+FullPage Syntax
+---------------
+	WebDriver driver = new EdgeDriver();
+	TakesScreenShot scr = (TakesScreenShot)driver;
+	File sourceFile = ts.getScreenshotAs(OutputType.FILE); <-- saves the screenshot in JVM memory till it exits
+	File targetFile = new File(System.getProperty("user.dir") + "\\ScreenShots\\fullpage.png");
+	sourceFile.renameTo(targetFile); // copying source file to targetfile
+Note -
+	The method getScreenshotAs() will return a File type of variable (needs import)
+	We need to export the file from JVM memory to required path using the sourceFile variable
+	Then make an object of file with parameters directory and file name
+	System.getProperty("user.dir") will return the current user project directory (dynamically get the project dir)
+	sourceFile.renameTo(targetFile) copying source file to targetfile
+>>For creating multiple screenshots, we need to give new names or the old screenshots will be replaced with new ones with same name<<
+	
+Specific area or element syntax
+-------------------------------
+	driver.get(baseUrl);
+	WebElement featuredProductElement = driver.findElement(By.xpath(featuredProduct));
+// calling getScreenShot method from WebElement interface instead of TakesScreenShot interface
+	File sourceFile = featuredProductElement.getScreenshotAs(OutputType.FILE);
+	File targetFile = new File(System.getProperty("user.dir") + "\\ScreenShots\\specificArea.png");
+	sourceFile.renameTo(targetFile);
+Note -
+	Here, we directly call the getScreenshot method from the element variable
+	Thus we dont need to use the TakeScreenShot interface
+	Specific area capturing depends heavily on the xpath
+	We can use the same method for capturing a specific webelement also
+>>Same as specific area capturing since both are done via webelement<<
+________________________________________________________________________________________________________
+
+DriverOptions Class
+===================
+Selenium has provided an Options class for each browser variants
+eg:
+	ChromeOptions, FirefoxOptions, EdgeOptions
+	The objective is to control browser specific settings like plugins, incognito, SSL etc
+
+Use cases
+~~~~~~~~~
+	>>Headless testing<< 
+  	  ''''''''''''''''
+	-> no window or gui popups. the execution gets done in the background	
+How to use?
+----------
+Syntax-
+	EdgeOptions options = new EdgeOptions();
+	options.addArguments("--headless=new"); // setting for headless testing
+	WebDriver driver = new EdgeDriver(options);
+Note -
+	The options.addArguments must be before webdriver instantiation	
+	Then we need to add the options obj ref to EdgeDriver as parameter
+Advantages
+---------	
+	1> we can do multiple tasks (since executions happen in the backend)
+	2> faster execution (since there is no gui it will be way faster)
+Disadvantages
+-------------
+	1> user cannot see the actions on the page, thus cannot understand the flow/ functionality of the test	
+	2> a new person joining the team wont be able to understand the flow of whats happening
+
+When to use?
+-----------
+	If our automation script is completed and it is running in the DevOps/CI environment then headless execution is preffered
+	We dont need to see UI at dev/ci environment and it will be faster.
+When not to use?
+---------------	
+	Initial stage of automation development, we need the UI for xpath and element confirmation
+	It is NOT recommended to use headless mode
+
+	>>SSL Handling<<
+  	  ''''''''''''
+	A website needs SSL certificate to function properly otherwise it will thrwo exceptions
+	SSL - Secured Socket Layer (Certificate required to acces the webpage as intended)
+Syntax-
+	EdgeOptions options = new EdgeOptions();
+	options.setAcceptInsecureCerts(true); // accepts SSL certificates
+	WebDriver driver = new EdgeDriver(options);
+
+	>>Hiding 'Browser is being controlled by automated test software'<<
+  	  ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+  	No additional functionality by enabling or disbaling it
+ Syntax-
+	EdgeOptions options = new EdgeOptions();
+	options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });	
+	
+	>>Running in Incognito Mode<<
+	  '''''''''''''''''''''''''
+	EdgeOptions options = new EdgeOptions();
+	options.addArguments("--inPrivate"); // edge
+	
+	>>Enabling Plugins<<
+	  ''''''''''''''''
+Extensions are by default disabled
+There are 4 steps to enable extensions in browser
+	1> Add CRX Extractor/Downloader to browser (manually) - to get crx file of any other extension files
+	2> Add SelectorsHub/adblocker etc plugin to browser (manually)
+	3> Capture crx file for selectorhub extension
+	4> pass crx file path in automation script in browser options	
+
+Syntax for single extension-
+	EdgeOptions options = new EdgeOptions();
+	File file = new File("C:\\Users\\ARUN\\Downloads\\SelectorsHubXPath-Helper.crx");
+	// setting path for crx file
+	options.addExtensions(file);
+
+Syntax for multiple extension-  	
+	EdgeOptions options = new EdgeOptions();
+	File selectorsHub = new File("C:\\Users\\ARUN\\Downloads\\SelectorsHubXPath-Helper.crx");
+	File uBlock = new File("C:\\Users\\ARUN\\Downloads\\uBlock-Origin.crx");
+	List<File> extensions = new ArrayList<File>();
+	extensions.add(selectorsHub);
+	extensions.add(uBlock);
+	options.addExtensions(extensions);
+	
+	---END---

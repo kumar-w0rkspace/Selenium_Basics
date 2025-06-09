@@ -99,3 +99,6 @@ List of demo websites for different element / functionality tests
 
 33> https://davidwalsh.name/demo/multiple-file-upload.php
 	> file uploads
+
+34> https://expired.badssl.com/
+	> SSL handling
