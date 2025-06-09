@@ -85,8 +85,15 @@ Automation concepts done in sessions
 	  |
 	   `--> SendKeys
 	
-	>
-
+	> Screenshots
+	  | | 
+	  |  `--> Full Page
+	   `----> Area / Element
+	
+	> DriverOptions
+	  | | 
+	  |  `--> Headless mode
+	   `----> Enabling extensions
 
 >>Framework-->
 
