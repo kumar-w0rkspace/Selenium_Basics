@@ -40,65 +40,62 @@ List of demo websites for different element / functionality tests
 13. https://ui.vision/demo/webtest/frames/
 	> Topic - frames & iFrames
 
-14. https://dummy-tickets.com/buyticket
-	> 
-
-15. https://www.bjs.com/
+14. https://www.bjs.com/
 	> Topic - AutoSuggest Dropdown
 
-16. https://jquery-az.com/boots/demo.php?ex=63.0_2
+15. https://jquery-az.com/boots/demo.php?ex=63.0_2
 	> Topic - Bootstrap dropdown
 
-17. https://phppot.com/demo/jquery-dependent-dropdown-list-countries-and-states/
+16. https://phppot.com/demo/jquery-dependent-dropdown-list-countries-and-states/
 	> Topic - Dropdown
 
-18. https://jqueryui.com/datepicker/
+17. https://jqueryui.com/datepicker/
 	> Topic - Calender
 
-19. https://blazedemo.com/
+18. https://blazedemo.com/
 	> Topic - Tables
 
-20. https://demo.opencart.com/admin/ (Locked by looped captcha)
+19. https://demo.opencart.com/admin/ (Locked by looped captcha)
 	> Multiple Functionalities
 
-21. https://practice.expandtesting.com/
+20. https://practice.expandtesting.com/
 	> Multiple Functionalities
 
-22. https://dummyticket.com/dummy-ticket-for-visa-application/
+21. https://dummyticket.com/dummy-ticket-for-visa-application/
 	> Multiple Functionalities (Form based) 
 
-23. https://techbeamers.com/selenium-practice-test-page/
+22. https://techbeamers.com/selenium-practice-test-page/
 	> All in single page
 
-24> https://www.testautomationstudio.com/demo/
+23> https://www.testautomationstudio.com/demo/
 	> Inculding cheatsheets
 
-25> https://swisnl.github.io/jQuery-contextMenu/demo.html
+24> https://swisnl.github.io/jQuery-contextMenu/demo.html
 	> jQuery
 
-26> https://demo.guru99.com/test/drag_drop.html
+25> https://demo.guru99.com/test/drag_drop.html
 	> Drag and drop (+mult func)
 	
-27> https://automationexercise.com/
-	> inc tc
+26> https://automationexercise.com/
+	> Inc tc
 
-28> https://vinothqaacademy.com/demo-page-healthcare/
-	> multi func
+27> https://vinothqaacademy.com/demo-page-healthcare/
+	> Multi func
 
-29> https://techbeamers.com/selenium-practice-test-page/
+28> https://techbeamers.com/selenium-practice-test-page/
 	> Practice test page
 
-30> https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/
+29> https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/
 	> Sliders only
 
-31> https://text-compare.com/
+30> https://text-compare.com/
 	> Keyboard Actions
 
-32> https://home.tobias-schwarz.com/tests/viewport/scroll-horizontal-scalable.php
+31> https://home.tobias-schwarz.com/tests/viewport/scroll-horizontal-scalable.php
 	> Vertical / Horizontal page slide
 
-33> https://davidwalsh.name/demo/multiple-file-upload.php
-	> file uploads
+32> https://davidwalsh.name/demo/multiple-file-upload.php
+	> File uploads
 
-34> https://expired.badssl.com/
+33> https://expired.badssl.com/
 	> SSL handling
