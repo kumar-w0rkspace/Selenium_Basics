@@ -95,13 +95,13 @@ Automation concepts done in sessions
 	  |  `--> Headless mode
 	   `----> Enabling extensions
 
-	> Broken Links Handling
-
 	> Shadow DOM
 	  | | | 
 	  | |  `--> Basic
 	  |  `----> Nested
 	   `------> Multi Nested
+
+	> Broken Links Handling
 
 	> SVG Elements
 
