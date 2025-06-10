@@ -95,6 +95,16 @@ Automation concepts done in sessions
 	  |  `--> Headless mode
 	   `----> Enabling extensions
 
+	> Broken Links Handling
+
+	> Shadow DOM
+	  | | | 
+	  | |  `--> Basic
+	  |  `----> Nested
+	   `------> Multi Nested
+
+	> SVG Elements
+
 >>Framework-->
 
 	>
