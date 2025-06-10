@@ -99,3 +99,15 @@ List of demo websites for different element / functionality tests
 
 33> https://expired.badssl.com/
 	> SSL handling
+
+34> http://www.deadlinkcity.com/
+	> Broken link handling
+
+35> https://practice.automationtesting.in/test-cases/
+	> Including testcases
+
+36> https://dev.automationtesting.in/
+	> Multi Functionality including ShadowDOM
+
+37> https://books-pwakit.appspot.com/
+	> ShadowDOM Scenario
