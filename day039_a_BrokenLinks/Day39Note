@@ -1,0 +1,97 @@
+Day38 - Broken Links, Shadow DOM, SVG Elements
+==============================================
+Links -
+	When we click on a link, the client request will go to the server.
+	Then it will fetch the resource and return it to client
+Broken Links-
+	When the link we clicked dont have any resource on server side, then the link is broken link
+	Eg : Page not found, 404 error etc
+
+Note - If the link is having resource in server, then the resource will be returned
+	   If the link dont have no resource, then it will return a status code
+	   We can find if the link is broken or not by the status code return
+	   By analyzing the status code, we can find if the link is broken or not
+
+Conditions for checking broken link
+	>A link should have href attribute and corresponding value (eg href = "https://abc.com") 
+	>Then the url will be hit with a request to server
+	 Once we hit the server, it will return a status code
+	>If status code is greater than 400, then the link is broken
+We need to repeat this step for all links to check if its broken or not
+__________________________________________________________________________________________________________
+Shadow DOM
+~~~~~~~~~~
+DOM -	
+	Whenever we are browsing some website or whenever the webpage is loading the DOM will be created at runtime
+Shadow DOM
+	The DOM's that are created inside Main DOM are called shadow DOMs (DOM contains another DOM)
+	For all the shadow DOM, there will be a root document, called root DOM
+	
+>>Only CSS selectors can identify the shadow dom elements<<
+
+Document > Shadow host > Shadow root {> shadow element / tree (elements)}
+The element that is holding the shadow root is called shadow host
+This is a kind of web technology	
+Advantage
+	The webpage loading will be very fast by reducing the load of the page
+Disadvantage
+	xPath CANNOT go into shadow DOM / root if elements are present inside them
+
+Types of Shadow DOMS
+	Basic Shadow element
+	Nested shadow element
+	Multi nested shadow element
+
+>>If we need to capture an element inside a shadow dom, first we need to capture the primary shadow host then the element
+>>If we need to capture an element inside nested shadow dom, first we need to capture the primary shadow host, then secondary then the element
+>>Same process for multi nested shadow elements also. Capture all the shadow hosts till which host contains the element, then get the element
+
+Syntax
+------
+Basic
+'''''
+	String cssSelectorHost1 = "#shadow-root";
+	SearchContext shadowRootHost1 = driver.findElement(By.cssSelector(cssSelectorHost1)).getShadowRoot();
+	WebElement host1Element = shadowRootHost1.findElement(By.cssSelector("#shadow-element"));
+	System.out.println(host1Element.getText());	
+exp: 
+	here the getShadowRoot method returns a SearchContext variable
+	then we use the same variable to find the shadow element to another variable
+	finally we use getText method to get the value of the element
+Alternatively, without using variables
+	driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot().findElement(By.cssSelector("#shadow-element")).getText();
+
+Nested
+''''''
+	String cssSelectorForHost1 = "#shadow-root";
+	String cssSelectorForHost2 = "#inner-shadow-dom";
+	SearchContext shadow0 = driver.findElement(By.cssSelector(cssSelectorForHost1)).getShadowRoot();
+	SearchContext shadow1 = shadow0.findElement(By.cssSelector(cssSelectorForHost2)).getShadowRoot();
+	WebElement nestedElement = shadow1.findElement(By.cssSelector("#nested-shadow-element"));	
+
+Multi Nested
+''''''''''''
+	SearchContext shadowHost1 = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot();
+	SearchContext shadowHost2 = shadowHost1.findElement(By.cssSelector("#inner-shadow-dom")).getShadowRoot();
+	SearchContext shadowHost3 = shadowHost2.findElement(By.cssSelector("#nested-shadow-dom")).getShadowRoot();
+	WebElement multiNestedElement = shadowHost3.findElement(By.cssSelector("#multi-nested-shadow-element"));	
+	
+We can depend heavily on Selectors Hub for getting the shadow dom hosts and elements.
+It works really well compared to manually trying to find the path
+______________________________________________________________________________________________________________
+	
+SVG Elements
+	These are small images or icons on webpages
+	We cannot locate these using conventional methods (devtools, normal path etc)
+	If we try with conventional methods, we get NoSuchElementException
+	We can locate the xpath for svg elements using name() method
+Eg: //button[@title='Timesheets']//*[name()='svg']
+
+   ---END--
+	
+	
+	
+	
+	
+	
+	
