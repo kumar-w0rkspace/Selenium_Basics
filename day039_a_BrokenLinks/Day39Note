@@ -1,4 +1,4 @@
-Day38 - Broken Links, Shadow DOM, SVG Elements
+Day39 - Broken Links, Shadow DOM, SVG Elements
 ==============================================
 Links -
 	When we click on a link, the client request will go to the server.
