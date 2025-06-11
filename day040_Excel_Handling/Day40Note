@@ -1,0 +1,138 @@
+Day40 - Data Driven Testing
+===========================
+Notes
+-----
+Working with Excel Files
+Selenium dont support any dependencies for data driven testing
+We need to use third party API
+	
+Apache POI
+----------
+The java API for MS documents.
+We need dependencies to work with Excel files 
+	1> Apache POI Common
+	2> Apache POI based on OPC and OOXML schema
+	3> We will also need log4j-core dependencies (just to remove an error msg)
+	
+Notes to remember while working with excel and java
+	1. An excel file contains a workbook
+	2. The workbook contains excel sheets
+	3. The sheets contain multiple rows
+	4. The rows contains cells
+	5. The cells hold the data we want to work with
+
+Excel File > WorkBook > Sheets > Rows > Cells > Data
+We want to read and write data from and into the cells
+>Every component in the excel is an object<
+
+Java Class
+	 > Reading mode -> FileInputStream
+	 > Writing mode -> FileOutputStream
+Apache POI class
+	> XSSFWorkBook
+	> XSSFSheet
+	> XSSFRow
+	> XSSFCell
+
+Generally, we save the external files like the excel file to use for data driven testing inside a folder in our project
+Rather than saving it at random location and passing the path
+By saving it to the project, we can dynamically call the System.getProperty(user.dir) to get the path of project
+Then add the folder and file name
+
+Syntax to read data from excel
+------------------------------
+	FileInputStream fileToRead = new FileInputStream(System.getProperty("user.dir") + "\\TestData\\datasheet.xlsx");
+// Creating workBook object
+	XSSFWorkbook workBook = new XSSFWorkbook(fileToRead); 
+// Creating sheet Object
+	XSSFSheet sheet1 = workBook.getSheet("Sheet1"); // name
+	// XSSFSheet sheet1 = workBook.getSheetAt(0); // index
+// Finding the total no of rows
+	int totalRows = sheet1.getLastRowNum();
+// Finding the total no of cells
+	int totalCells = sheet1.getRow(1).getLastCellNum();
+	System.out.println("Number of rows = " + totalRows); // counting rows from 0
+	System.out.println("Number of cells = " + totalCells);// counting cells from 0
+// Looping over row and cells for printing
+	for (int rows = 0; rows <= totalRows; rows++) 
+	{
+// getting entire row before reading cells
+	  XSSFRow currentRow = sheet1.getRow(rows); 
+	  System.out.println(" ");
+	  for (int col = 0; col < totalCells; col++) 
+	  {
+		XSSFCell currentCell = currentRow.getCell(col);
+		System.out.print(currentCell.toString() + "\t");
+	  }
+	}
+// Closing resource since they are occupying space in memory
+	workBook.close();
+	fileToRead.close();
+
+Syntax to write data to excel - Static
+--------------------------------------
+We can either overwrite an existing file, update a file or create a new file to write data
+The main point is we have to create everything as new since we need to input data into cells
+	
+// creating workbook object
+	XSSFWorkbook workBook = new XSSFWorkbook(); // dont need to pass file parameter while writing
+	XSSFSheet sheet = workBook.createSheet("dataSheet");
+	XSSFRow row1 = sheet.createRow(0);
+	row1.createCell(0).setCellValue("Welcome");
+	row1.createCell(1).setCellValue("To");
+	row1.createCell(2).setCellValue("Excel");
+	row1.createCell(3).setCellValue("data");
+	row1.createCell(4).setCellValue("input");
+	XSSFRow row2 = sheet.createRow(1);
+	row2.createCell(0).setCellValue(284675);
+	row2.createCell(1).setCellValue(true);
+	row2.createCell(2).setCellValue('X');
+	row2.createCell(3).setCellValue(20.22);
+	row2.createCell(4).setCellValue("String");
+// create a new excel file and write data into it
+	FileOutputStream fileToWrite = new FileOutputStream(System.getProperty("user.dir") + "\\TestData\\testFile.xlsx");
+	workBook.write(fileToWrite);
+	workBook.close();
+	fileToWrite.close();
+
+Syntax to write data to excel - Dynamic
+--------------------------------------
+	Scanner sc = new Scanner(System.in);
+// creating workbook object
+	XSSFWorkbook workBook = new XSSFWorkbook(); // dont need to pass file parameter while writing
+	XSSFSheet sheet = workBook.createSheet("Dynamic dataSheet");
+	System.out.print("Enter number of rows: ");
+	int rows = sc.nextInt();
+	System.out.print("Enter number of cells: ");
+	int cells = sc.nextInt();
+	for (int r = 0; r <= rows; r++) 
+	{
+		XSSFRow currentRow = sheet.createRow(r); // new row
+		for (int c = 0; c < cells; c++) 
+		{
+			System.out.println("Enter data for " + (r + 1) + " row, " + (c + 1) + " cell");
+			XSSFCell cell = currentRow.createCell(c); // new cell
+			cell.setCellValue(sc.next()); // inputting data into the cell
+		}
+	}
+
+	// create a new excel file and write data into it
+	FileOutputStream fileToWrite = new FileOutputStream(System.getProperty("user.dir") + "\\TestData\\testFile_Dynamic.xlsx");
+	workBook.write(fileToWrite); // attach workbook to file
+	workBook.close();
+	fileToWrite.close();
+
+Syntax to write data to specific cell
+-------------------------------------
+	XSSFWorkbook workBook = new XSSFWorkbook();
+	XSSFSheet sheet = workBook.createSheet("Specific entry dataSheet");
+	XSSFRow row4 = sheet.createRow(4);
+	XSSFCell cell4 = row4.createCell(3);
+	cell4.setCellValue("Random cell value edited");
+	FileOutputStream fileToWrite = new FileOutputStream(System.getProperty("user.dir") + "\\TestData\\testFile_Specific.xlsx");
+	workBook.write(fileToWrite);
+	workBook.close();
+	fileToWrite.close();
+	System.out.println("Data written to file");
+
+	---END---
