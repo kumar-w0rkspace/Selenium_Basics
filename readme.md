@@ -101,9 +101,20 @@ Automation concepts done in sessions
 	  |  `----> Nested
 	   `------> Multi Nested
 
+	> Excel Handling
+	  | | 
+	  |  `--> Reading data
+	   `----> Writing data
+
 	> Broken Links Handling
 
 	> SVG Elements
+
+	> Data Driven Testing
+
+	> Properties file handling
+
+
 
 >>Framework-->
 
