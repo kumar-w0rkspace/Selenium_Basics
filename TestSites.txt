@@ -111,3 +111,9 @@ List of demo websites for different element / functionality tests
 
 37> https://books-pwakit.appspot.com/
 	> ShadowDOM Scenario
+
+38> https://www.moneycontrol.com/fixed-income/calculator/state-bank-of-india-sbi/fixed-deposit-calculator-SBI-BSB001.html
+	> Data driven testing temp site
+
+39> https://www.cit.com/cit-bank/resources/calculators/certificate-of-deposit-calculator
+	> DDT
