@@ -62,6 +62,5 @@ Scenario -
 	Instead of hardcoding these data in the code, we just have to modify the properties file if there is any change
 	We can create a seperate file and all those data that is common for all the testcases, we will consolidate the data and save it in properties file
 	Then in every test case, we will refer the same file.
-			 
 
-
+		---END---
