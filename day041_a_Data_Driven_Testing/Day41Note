@@ -1,0 +1,67 @@
+Day41 - Data Driven Testing
+===========================
+
+Prerequisites
+	1. Understand the functionality (Test case)
+	2. Prepare the test data in excel
+	3. Develop Automation Script
+
+Sample Test Case for Interest calculation-
+	https://www.moneycontrol.com/fixed-income/calculator/state-bank-of-india-sbi/fixed-deposit-calculator-SBI-BSB001.html
+	Test data in excel (sample data including negative case)
+	Principal 	Rate of Interest 	Period		Frequency		Maturity	Expected	Actual
+	20000			10		2 years		Simple Interest		24000		Pass
+	40000			15		5 years		Simple Interest		70000		Pass
+	75000			12		2 days		Simple Interest		75045.32	Fail
+
+Here, we need to enter the data from second and third rows into the application and calculate the result
+Then compare it with expected maturity value and pass the same result on actual field
+
+The process should be like
+	1> We need to capture the first row data from excel
+	2> Enter those data into the application
+	3> Do the validation
+	4> Once validation is done, capture the result and write the result in same excel sheet, last column
+	5> Repeat with next row and continue depending the number of rows in sheet
+_________________________________________________________________________________________________________
+
+Properties File and reading data
+--------------------------------
+Properties file is just a text file with .properties extension that we use to save configuration details
+eg > Browser name
+	 User name
+	 Password
+	 App url
+It doesnt follow any syntax of java. Its just like a notepad. 
+eg
+	appurl=https://testautomationpractice.blogspot.com/
+	email=randomemail@gmail.com
+	password=password123
+	id=223546
+	customername=James
+It just has a key and a value
+We can read the properties file using built in java class - Properties
+
+Syntax
+// creating obj
+	Properties propertiesObj = new Properties();
+// locating file
+	FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "\\TestData\\config.properties");
+// loading file
+	propertiesObj.load(file);
+// reading data from the file
+	String url = propertiesObj.getProperty("appurl");
+	String email = propertiesObj.getProperty("email");
+	String password = propertiesObj.getProperty("password");
+	String id = propertiesObj.getProperty("id");
+	String cName = propertiesObj.getProperty("customername");
+
+Scenario -
+	If we have over 100 testcases, and for each testcase we want to 1> launch the app, 2> login
+	These two steps has to be done for almost every test cases.
+	Instead of hardcoding these data in the code, we just have to modify the properties file if there is any change
+	We can create a seperate file and all those data that is common for all the testcases, we will consolidate the data and save it in properties file
+	Then in every test case, we will refer the same file.
+			 
+
+
