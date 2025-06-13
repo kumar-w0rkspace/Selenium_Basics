@@ -118,4 +118,8 @@ Automation concepts done in sessions
 
 >>Framework-->
 
-	>
+	> Setting up TestNG
+	  | | | 
+	  | |  `--> integration
+	  |  `----> manual xml
+	   `------> reports
