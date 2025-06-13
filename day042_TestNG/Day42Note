@@ -1,0 +1,85 @@
+Day42 TestNG
+============
+TestNG -Test New Generation
+	It is a unit testing tool which testers can use it for building framework
+	TestNG is only for Java (Alternate and popular - JUnit)
+We can use TestNG for
+	Writing tc
+	Organizing tc
+	Executing tc
+	Generating report
+	Parallel testing and more..
+
+>>If there are 10 tc that needs to be executed in priority, TestNG is a suite used to order or streamline the tests<<
+
+Advantages
+----------
+	> Test cases and Test suites
+	> Grouping of Test cases
+	> Prioritizing
+	> Parameterization (Eg: passing browser parameter at runtime)
+	> Parallel testing
+	> Reports
+	
+Configuration
+-------------
+	From Eclipse marketplace, download TestNG and install it (Eclipse has TestNG but not the project)
+	Then add dependency from Mvn.repo to our project pom.xml file
+	
+Writing test cases in TestNG style
+	TestNG test cases don't have main method.
+	Instead we use annotation @Test to run the script
+	
+We need to understand the Test cases and create methods for it accordingly
+After creating method, we need to give annotation @ test and import org.testng.annotations.Test package
+Then we can run the class by running it as TestNG Test.
+There will be two outputs
+	1. Console report
+	2. TestNG report
+
+Notes
+	TestNG execute test methods based on alphabetical order
+	@Test(priority=intNum) controls the order of execution
+	Once the priority is provided to test methods, then order of methods in script is not considered
+	Priorities can be random integer numbers (Doesn't have to be consecutive)
+	If no priority is given, the default value is zero
+	If the same priority values are given, then the methods are executed in alphabetical order
+	Negative values are also allowed in priority (priority just have to be integer)
+	TestNG executes test method only if they are having @Test annotation
+
+We can create testNG class instead of basic java class
+If we have one single test case class, we can run as TestNG and execute
+But if we have multiple test case class, and we need to execute all of them, we can use TestNG.xml file to run all at once
+	Once we use testng.xml file, we can see the extended testng report.
+	Right click the class/classes we need to convert to testng and click convert to TestNG.
+	Give path where we need the xml file to be placed
+	There will be an error on the xml file, just click and download for the error.
+
+Once executed, there will be a new folder named test-output folder for the reports
+(refresh everytime after an execution)
+	1> emailable report
+	2> index report
+
+We can manually make the xml file to add multiple class and add more details to it
+eg :
+	> parallel testing, grouping, parameterization etc
+
+Advantage of xml
+	execution of group of testcases
+	report availability(after execution)
+	
+Sample xml format
+-----------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="myTestSuite">
+	<test name="firstTest">
+		<classes>
+			<class name="day042_TestNG.AB_OrangeHRM"></class>
+			<class name="day042_TestNG.AA_BareBasics"></class>
+		</classes>
+	</test>
+</suite>
+
+		---END---
