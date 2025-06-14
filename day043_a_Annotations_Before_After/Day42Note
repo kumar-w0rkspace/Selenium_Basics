@@ -54,7 +54,18 @@ Console output -
 	
 Here, the java logic will find out that the titles are not same, but TestNG logic will pass the testcase
 To avoid that and yield proper report, we use Assertions
-Two types
+
+Alternatively if we want to use java logic-
+	if (expectedTitle.equals(capturedTitle))
+	{
+		Assert.assertTrue(true);
+	}
+	else 
+	 {
+		Assert.assertTrue(false);
+	  }
+
+Two types of Assertions
 	Hard -> Puts hard stop to script execution
 	Soft -> There is no stop in script execution
 Generally Hard assertions are used everywhere by industrial standards
