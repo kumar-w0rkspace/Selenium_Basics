@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite with two Tests and three class">
+	<test name="myTest1">
+		<classes>
+		<class name="day043_a_Annotations_Before_After.Suite.AD_Suite_TC1"></class>
+		<class name="day043_a_Annotations_Before_After.Suite.AD_Suite_TC2"></class>
+		<class name="day043_a_Annotations_Before_After.Suite.AD_Suite_TC3"></class>
+		</classes>
+	</test>
+		<test name="myTest2">
+		<classes>
+		<class name="day043_a_Annotations_Before_After.Suite.AD_Suite_TC2"></class>
+		<class name="day043_a_Annotations_Before_After.Suite.AD_Suite_TC1"></class>
+		<class name="day043_a_Annotations_Before_After.Suite.AD_Suite_TC3"></class>
+		</classes>
+	</test>
+</suite>
