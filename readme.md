@@ -120,6 +120,17 @@ Automation concepts done in sessions
 
 	> Setting up TestNG
 	  | | | 
-	  | |  `--> integration
-	  |  `----> manual xml
-	   `------> reports
+	  | |  `--> Integration
+	  |  `----> Manual xml
+	   `------> Reports
+
+	> Annotations
+	  | | | 
+	  | |  `--> @Test
+	  |  `----> Before (Method, Class, Test, Suite)
+	   `------> After (Method, Class, Test, Suite)
+
+	> Assertions
+	  | | 
+	  |  `--> Hard
+	   `----> Soft
