@@ -85,7 +85,7 @@ We need to understand what all tests come under which group before grouping
 	void tc3() {}
 
 xml syntax
-
+----------
 	<suite name="groupingTrial">
 	<test name="testGrouping">
 		<groups>
