@@ -134,3 +134,13 @@ Automation concepts done in sessions
 	  | | 
 	  |  `--> Hard
 	   `----> Soft
+
+	> Method Dependency
+	  | 
+	   `--> dependsOnMethods
+
+	> Grouping
+	  | 
+	   `--> xml suite grouping
+
+
