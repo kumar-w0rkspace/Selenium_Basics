@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="groupingTrial">
+	<test name="testGrouping">
+		<groups>
+			<run>
+				<include name="sanity"/> <!-- will include sanity and functional-->
+				<exclude name="regression"/> <!-- excluding functional-->
+			</run>
+		</groups>
+		<classes>
+			<class name="day044_b_Grouping.LoginTest" />
+			<class name="day044_b_Grouping.SignUpTest" />
+			<class name="day044_b_Grouping.PaymentTest" />
+		</classes>
+	</test>
+</suite>
+<!-- 
+	1. all sanity tests
+	<include name="sanity"/>
+	
+	2. all regression tests
+	<include name="regression"/>
+	
+	3. all sanity but not regression
+	<include name="sanity"/>
+	<exclude name="regression"/>
+	
+	4. all regression but not sanity
+	<include name="regression"/>
+	<exclude name="sanity"/>
+	
+	5. both sanity and regression <functional> (it is recommended to add another name if two groups are combining)
+	<include name="functional"/>	
+	
+	6. only sanity and regression
+	<exclude name="functional"/>
+	
+-->

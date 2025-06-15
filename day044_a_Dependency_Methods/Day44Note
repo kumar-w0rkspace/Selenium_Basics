@@ -1,0 +1,125 @@
+Day44 TestNG- Dependency Methods
+================================
+
+Certain test steps require a prerequisite to achieve the expected result
+Scenario-
+	Open app > Login > Search > Advanced Search > Login
+
+Here, if Open app fails, then none of the other methods can execute
+>>TestNG will execute the other methods regardless if the previous step pass or fail<<
+
+We can say that 
+	Login method is dependent on Open app
+	Search and Adv search is dependent on Login
+	Logout is dependent on Login
+If open app fails, there is no point in wasting time and resource in doing other steps
+Likewise, if Login fails, there is no point in checking search, adv search and logout
+
+To achieve this we can mention the dependent method as parameter.
+Syntax-
+	@Test(priority = 1)
+	void openApp() 
+	{<method definition>}
+	
+	@Test(priority = 2, dependsOnMethods = { "openApp" })
+	void login() 
+	{<method definition>}
+	
+	@Test(priority = 3, dependsOnMethods = { "login" })
+	void search() 
+	{<method definition>}
+	
+	@Test(priority = 4, dependsOnMethods = { "login", "search" }) // multiple parameter
+	void advSearch() 
+	{<method definition>}
+	
+	@Test(priority = 5, dependsOnMethods = { "login" })
+	void logout() 
+	{<method definition>}
+____________________________________________________________________________________________________
+
+Grouping
+========
+
+Grouping tests are necessary to sort and enable necessary testmethods only
+It is possible only through passing parameter for @Test annotation and manipulating it via xml
+Scenario -
+	jClass LoginTest   --> tc1(), tc2(), tc3()
+	jClass SignUpTest  --> tc1(), tc2(), tc3()
+	jClass PaymentTest --> tc1(), tc2(), tc3()
+We need to understand what all tests come under which group before grouping
+
+>>Lets say 
+	LoginTest comes under sanity
+	SignUpTest comes under regression
+	PaymentTest comes under sanity and regression (its preffered to give a new name. eg functional)
+
+@Test annotation syntax for LoginTest
+	@Test(priority = 1, groups = { "sanity" }) // group name can be anything
+	void tc1() {}
+	
+	@Test(priority = 2, groups = { "sanity" })
+	void tc2() {}
+	
+	@Test(priority = 3, groups = { "sanity" })
+	void tc3() {}
+
+@Test annotation syntax for SignUpTest
+	@Test(priority = 1, groups = { "regression" }) // group name can be anything
+	void tc1() {}
+	
+	@Test(priority = 2, groups = { "regression" })
+	void tc2() {}
+	
+	@Test(priority = 3, groups = { "regression" })
+	void tc3() {}
+
+@Test annotation syntax for sanity and regression (functional)
+	@Test(priority = 1, groups = { "sanity", "regression", "functional" }) // group name can be anything
+	void tc1() {}
+	
+	@Test(priority = 2, groups = { "sanity", "regression", "functional" })
+	void tc2() {}
+	
+	@Test(priority = 3, groups = { "sanity", "regression", "functional" })
+	void tc3() {}
+
+xml syntax
+
+	<suite name="groupingTrial">
+	<test name="testGrouping">
+		<groups>
+			<run>
+				<include name="sanity"/> <!-- will include sanity and functional-->
+				<exclude name="regression"/> <!-- excluding regression-->
+			</run>
+		</groups>
+		<classes>
+			<class name="LoginTest" />
+			<class name="SignUpTest" />
+			<class name="PaymentTest" />
+		</classes>
+	</test>
+</suite>
+
+1. all sanity tests-
+	<include name="sanity"/>
+	
+2. all regression tests
+	<include name="regression"/>
+	
+3. all sanity but not regression
+	<include name="sanity"/>
+	<exclude name="regression"/>
+
+4. all regression but not sanity
+	<include name="regression"/>
+	<exclude name="sanity"/>
+	
+5. both sanity and regression <functional> (it is recommended to add another name if two groups are combining)
+	<include name="functional"/>	
+	
+6. only sanity and regression
+	<exclude name="functional"/>
+
+			---END---
