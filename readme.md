@@ -3,7 +3,7 @@ Selenium (v4.32.0)
 
 Automation concepts done in sessions
 
->>#Topics-->
+>>Topics-->
 
 	> Setting up dependencies
 	  |
@@ -142,5 +142,14 @@ Automation concepts done in sessions
 	> Grouping
 	  | 
 	   `--> xml suite grouping
+
+	> Parameterization
+	  | | | 
+	  | |  `--> DataProviders
+	  |  `----> Cross Browser Testing
+	   `------> Parallel Testing
+		     | | 
+	 	     |  `--> Sequential
+	  	      `----> Together
 
 
