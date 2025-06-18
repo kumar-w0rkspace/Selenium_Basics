@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+   <!-- Adding parameter for cross browser testing-->
+   <parameter name="browser" value="firefox" />
+   <parameter name="url" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login" />
+   <parameter name="userName" value="Admin"/>
+   <parameter name="passWord" value="admin123" />
+    <classes>
+      <class name="day045_Parameterization.AB_Browser_SetUp_Via_XML" />
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
