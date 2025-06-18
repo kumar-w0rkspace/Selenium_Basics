@@ -117,3 +117,6 @@ List of demo websites for different element / functionality tests
 
 39> https://www.cit.com/cit-bank/resources/calculators/certificate-of-deposit-calculator
 	> DDT
+
+40> https://tutorialsninja.com/demo/index.php?route=account/login
+	> opencart alt
