@@ -152,4 +152,12 @@ Automation concepts done in sessions
 	 	     |  `--> Sequential
 	  	      `----> Together
 
+	> Listeners
+	  | | 
+	  |  `--> With XML
+	   `----> Without XML
+
+	> Extent Reports
+	   | 
+	    `--> Utility Management
 
