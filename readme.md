@@ -170,6 +170,6 @@ Automation concepts done in sessions
 <p align="center"><strong>END</strong></p>
 
 ***
-*Courtesy* - **Pavan Kumar Bhimavarapu** <br>
+*Courtesy* - <u>**Pavan Kumar Bhimavarapu**<u> <br>
 *Link     - https://www.youtube.com/c/pavanoltraining*
 ***
