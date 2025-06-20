@@ -49,16 +49,16 @@ Automation concepts done in sessions
 	  | | | 
 	  | |  `--> Frames
 	  |  `----> iFrames
-	   `------> JSscript Executor
+	   `------> JS Executor
 
-	> DropDowns
+	> Drop Downs
 	  | | | | 
 	  | | |  `--> Simple
-	  | |  `----> BootStrap
+	  | |  `----> Boot Strap
 	  |  `------> Hidden
-	   `--------> AutoSuggest
+	   `--------> Auto Suggest
 
-	> WebTables
+	> Web Tables
 	  | | | 
 	  | |  `--> Static
 	  |  `----> Dynamic
@@ -75,13 +75,13 @@ Automation concepts done in sessions
 	  |  `----> Keyboard
 	   `------> Action Vs Actions
 
-	> JSExecutors
+	> JS Executors
 	  | | | 
 	  | |  `--> Execute Script
 	  |  `----> Scroll Bar Vertical / Horizontal
-	   `------> Page ZoomIn / ZoomOut
+	   `------> Page Zoom In / Zoom Out
 
-	> FileUpload
+	> File Upload
 	  |
 	   `--> SendKeys
 	
@@ -90,7 +90,7 @@ Automation concepts done in sessions
 	  |  `--> Full Page
 	   `----> Area / Element
 	
-	> DriverOptions
+	> Driver Options
 	  | | 
 	  |  `--> Headless mode
 	   `----> Enabling extensions
@@ -137,7 +137,7 @@ Automation concepts done in sessions
 
 	> Method Dependency
 	  | 
-	   `--> dependsOnMethods
+	   `--> Depends on Method ()
 
 	> Grouping
 	  | 
@@ -145,7 +145,7 @@ Automation concepts done in sessions
 
 	> Parameterization
 	  | | | 
-	  | |  `--> DataProviders
+	  | |  `--> Data Providers
 	  |  `----> Cross Browser Testing
 	   `------> Parallel Testing
 		     | | 
@@ -161,3 +161,12 @@ Automation concepts done in sessions
 	   | 
 	    `--> Utility Management
 
+	> Page Object Model
+	  | | 
+	  |  `--> With Page Factory
+	   `----> Without Page Factory
+
+____________________________________________________________END____________________________________________________________
+
+Courtesy - Pavan Kumar Bhimavarapu
+Link     - https://www.youtube.com/c/pavanoltraining
