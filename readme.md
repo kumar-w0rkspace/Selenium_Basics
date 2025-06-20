@@ -167,9 +167,9 @@ Automation concepts done in sessions
 	   `----> Without Page Factory
 
 
-<p align="center">END</p>
+<p align="center"><strong>END</strong></p>
 
 ***
-*Courtesy - Pavan Kumar Bhimavarapu<br>*
+*Courtesy - **Pavan Kumar Bhimavarapu**
 *Link     - https://www.youtube.com/c/pavanoltraining*
 ***
