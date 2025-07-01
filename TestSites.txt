@@ -120,3 +120,6 @@ List of demo websites for different element / functionality tests
 
 40> https://tutorialsninja.com/demo/index.php?route=account/login
 	> opencart alt
+
+41> https://automationteststore.com/
+	> E-Commerce demo application
