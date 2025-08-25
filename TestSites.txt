@@ -123,3 +123,6 @@ List of demo websites for different element / functionality tests
 
 41> https://automationteststore.com/
 	> E-Commerce demo application
+
+42> https://thetestdata.com/
+	> Multi Func
